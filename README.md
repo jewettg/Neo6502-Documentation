@@ -16,3 +16,6 @@ Three different versions under development:
 
 # Future plans
 See [issues](https://github.com/jewettg/Neo6502-Documentation/issues).
+
+# LICENSE
+See [License](https://github.com/jewettg/Neo6502-Documentation/blob/main/LICENSE.md)
