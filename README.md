@@ -8,11 +8,7 @@ Three different versions under development:
 * [Web (HTML) based format](https://github.com/jewettg/Neo6502-Documentation/tree/main/web_html)
 
 # Change Log
-**2024-08-04**
-* Initial release, with written instructions regarding programming RP2040, firmware releases.
-* Incorporated text (rewritten) from the Olimex Neo6502 and Neo6502pc User Manuals.
-
-
+See [CHANGELOG.md](https://github.com/jewettg/Neo6502-Documentation/blob/main/CHANGELOG.md)
 
 # Future plans
 See [issues](https://github.com/jewettg/Neo6502-Documentation/issues).
