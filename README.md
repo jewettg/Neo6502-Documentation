@@ -13,5 +13,8 @@ See [CHANGELOG.md](https://github.com/jewettg/Neo6502-Documentation/blob/main/CH
 # Future plans
 See [issues](https://github.com/jewettg/Neo6502-Documentation/issues).
 
+# Contributing Authors
+See [CONTIBUTING.md](https://github.com/jewettg/Neo6502-Documentation/blob/main/CONTRIBUTING.md)
+
 # License
 See [License](https://github.com/jewettg/Neo6502-Documentation/blob/main/LICENSE.md)
