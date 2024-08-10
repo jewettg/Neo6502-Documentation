@@ -6,3 +6,5 @@
 **2024-08-10**
 * Lots of grammatical and formatting changes.
 * Added more content to the images folder.
+* Word doc contains NeoBASIC logo and functions.
+* Work in progress.
