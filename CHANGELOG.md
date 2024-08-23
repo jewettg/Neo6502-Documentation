@@ -1,5 +1,11 @@
 # Change Log
 
+**2024-08-18**
+- Additiona grammatical, spelling and formatting changes.
+- Updated footer for cleaner and larger page number, since it is used throughout the document.
+- Added initial Document Formatting Conventions section.
+
+
 **2024-08-17**
 - Renamed the document from Neo6502 Documentation to "The Ultimate Guide to the Neo6502".
 - Lots of grammatical and formatting changes.
