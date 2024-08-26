@@ -1,9 +1,15 @@
 # Change Log
 
-**2024-08-18**
+**2024-08-26**
 - Additiona grammatical, spelling and formatting changes.
 - Updated footer for cleaner and larger page number, since it is used throughout the document.
 - Added initial Document Formatting Conventions section.
+- Applying the document formatting convention to the document.
+- Remove callout for API functions, need to retweak
+- Added all RP2040 function calls, putting things into tables, removing group and function references, to better clear up how to call the functions.
+- Ensure that FAT32 formatted flash drives are required.  FAT will not work.
+- More clean-up of descriptions to ensure they make more sense.
+- Created a PDF version (edition).
 
 
 **2024-08-17**
