@@ -1,5 +1,9 @@
 # Change Log
 
+**2024-08-28**
+- Received final artwork, and updated NeoBASIC logo and title page logo.
+
+
 **2024-08-26**
 - Additiona grammatical, spelling and formatting changes.
 - Updated footer for cleaner and larger page number, since it is used throughout the document.
