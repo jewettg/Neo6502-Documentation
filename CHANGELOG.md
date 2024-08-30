@@ -1,11 +1,19 @@
 # Change Log
 
 **2024-08-28**
-- Received final artwork, and updated NeoBASIC logo and title page logo.
+- Fixed issue #1, received final artwork, and updated NeoBASIC logo and title page logo.
+- Fixed issue #16, correct image applied.
+- Fixed issue #19, changed emulators to "firmware images".
+- Fixed issue #17, removed screenshots, using actual color swatches, added hex RGB codes.
+- Fixed issue #7, adding website to all various places.
+- Implemented most changes in issue #20, continue to work on this issue.
+- Implemented most changes in issue #18, continue to work on this issue.
+- Updated and clarified lots of sections through out document.
+- Additional grammatical, spelling and formatting changes.
 
 
 **2024-08-26**
-- Additiona grammatical, spelling and formatting changes.
+- Additional grammatical, spelling and formatting changes.
 - Updated footer for cleaner and larger page number, since it is used throughout the document.
 - Added initial Document Formatting Conventions section.
 - Applying the document formatting convention to the document.
