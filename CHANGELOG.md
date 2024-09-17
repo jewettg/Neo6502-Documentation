@@ -1,5 +1,12 @@
 # Change Log
 
+**2024-09-02**
+- Completed the Sprites section
+- Completed the Sounds and Music section
+- Updates MOS section to include error/status codes and file attributes.
+- Fix layout of hardware images, and fixed the Neo6502pc diagram labeling.
+
+
 **2024-08-28**
 - Fixed issue #1, received final artwork, and updated NeoBASIC logo and title page logo.
 - Fixed issue #16, correct image applied.
@@ -45,3 +52,5 @@
 **2024-08-04**
 - Initial release, with written instructions regarding programming RP2040, firmware releases.
 - Incorporated text (rewritten) from the Olimex Neo6502 and Neo6502pc User Manuals.
+
+
