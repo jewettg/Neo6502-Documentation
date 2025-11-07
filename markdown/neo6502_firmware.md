@@ -4,6 +4,10 @@ The process of programming the RP2040 is a fairly easy process, *<u>however</u>*
 
 **NOTE:** Some firmware images require all switches of the configuration switch block be in the on (closed) position.
 
+| <img title="" src="file:///Users/jewettg/GitHub/Neo6502-Documentation/markdown/images/hw/neo6502pc_config_switch%20block.png" alt="neo6502pc_config_switch block.png" width="479"> | <img title="" src="file:///Users/jewettg/GitHub/Neo6502-Documentation/markdown/images/hw/programming_neo6502_conf_blk.png" alt="programming_neo6502_conf_blk.png" width="357"> |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Neo6502pc Back; showing the configuration switch block                                                                                                                             | The Neo6502 board; showing the configuration switch block.                                                                                                                     |
+
 ## Prerequisites
 
 - Your computer should be on, and you must be logged in and have the desktop present.  Best experience comes with no CPU intensive tasks running on your
@@ -11,14 +15,13 @@ The process of programming the RP2040 is a fairly easy process, *<u>however</u>*
 
 - You have the latest version of the firmware that you want to use downloaded to your computer. *It is highly recommended that you download the firmware file from the “source of truth” (the developer’s Github repository or website).
 
-- A firmware file comes in various sizes and names, based on the functionality
-  it performs, however it will always have the uf2 file extension.
+- A firmware file comes in various sizes and names, based on the functionality it performs, however it will always have the uf2 file extension.
 
 - Make sure the Neo6502 device has been powered down.
 
 ## RP2040 programming for the Neo6502
 
-<img src="images/hw/programming_neo6502.png" align="right" data-align="right" width="388">
+<img title="" src="file:///Users/jewettg/GitHub/Neo6502-Documentation/markdown/images/hw/programming_neo6502.png" alt="programming_neo6502.png" width="583" data-align="right">
 
 **Required hardware:**
 
@@ -51,9 +54,7 @@ The process of programming the RP2040 is a fairly easy process, *<u>however</u>*
 
 ## RP2040 programming for the Neo6502pc
 
-<img title="" src="images/hw/neo6502pc_config_switch block.png" alt="dip switches" width="420" align="right" data-align="right">
-
-**Required hardware:** 
+<img title="" src="file:///Users/jewettg/GitHub/Neo6502-Documentation/markdown/images/hw/neo6502pc_programming-boot.png" alt="neo6502pc_programming-boot.png" width="360" data-align="right">**Required hardware:** 
 
 - A computer with a USB port and a modern operating system.
 
@@ -67,8 +68,7 @@ The process of programming the RP2040 is a fairly easy process, *<u>however</u>*
 
 2. Slide the programming switch on the back of the Neo6502pc to the programming position (with the switch facing up and in the upper left corner – move to the right-most position).
 
-3. Press and hold the "boot" button (to the left of the programming switch).  *Ensure
-   you have heard or felt the button depress with a satisfying “click”.*
+3. Press and hold the "boot" button (to the left of the programming switch).  *Ensure you have heard or felt the button depress with a satisfying “click”.*
 
 4. Continue to press the “boot” button and turn the power on.
 
@@ -95,7 +95,7 @@ Based on the firmware that was just flashed, the Neo6502pc will now operate with
 
 # Available Firmware
 
-***The following are accurate as of the September 16th, 2024 revision of this document.***
+*The following are accurate as of the September 16th, 2024 revision of this document.*
 
 ## NeoBasic (codename: Morpheus)
 

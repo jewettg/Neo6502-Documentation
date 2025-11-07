@@ -27,12 +27,11 @@ Neither of the devices (the Neo6502 and Neo6502pc) are turn-key solutions.  Bot
 
 ## Please Note
 
-<div>
-<img title="please note" src="images/please_note.png" alt="please note" width="138" data-align="left">
-Regardless of the function you are hoping to utilize the Neo6502 or Neo6502pc, you must be familiar with the process of reprogramming (also known as flashing firmware) the 2MB flash memory utilized by the RP2040.  The firmware defines what function the Neo6502 or Neo6502pc will perform.  Current firmware available provide a BASIC interpreter (NeoBASIC) that is continues to be developed and improved, an Apple ][ emulator (using the real W6502), and an Oric Atmos.  Many and other firmware packages are currently being developed, so explore the various user forums, Discord, and Facebook to discover the endless possibilities of the Neo6502 and Neo6502pc.
+<div><img title="please note" src="images/title_page/please_note.png" alt="please note" width="138" data-align="left">
+Regardless of the function you are hoping to utilize the Neo6502 or Neo6502pc, you must be familiar with the process of reprogramming (also known as flashing firmware) the 2MB flash memory utilized by the RP2040.  The firmware defines what function the Neo6502 or Neo6502pc will perform.  Current firmware available provide a BASIC interpreter (NeoBASIC) that is continues to be developed and improved, an Apple ][ emulator (using the real W6502), and an Oric Atmos.  Many and other firmware packages are currently being developed, so explore the various user forums, Discord, and Facebook to discover the endless possibilities of the Neo6502 and Neo6502pc.
 <br>
 
-<img src="images/arrow_right_blue.png" title="arrow" alt="arrow" align="left" vertical-align="top" width="59"> Please read the Programming the RP2040 Section
+==> **[Please read the Programming the RP2040 Section](neo6502_start.md)**
 
 </div>
 
@@ -63,53 +62,3 @@ Regardless of the function you are hoping to utilize the Neo6502 or Neo6502pc, y
 - USB Keyboard *(wired and wireless w/USB dongle), bluetooth is not supported.*
 
 - *Optional,* USB Gamepad.
-
-----
-
-# Document Formatting Conventions
-
-In this documentation, the following standards will be used:
-
-- Code examples and parameters will be displayed in a fixed-space font.
-
-- parameters are listed in italics, and have a descriptive name to know what should be substituted, and the entire parameter is replaced with the described value.
-
-- parameters enclosed with square braces [] are optional.
-
-- The symbol ↩︎ indicates the entry of the key carriage return (return key).
-
-- The use of an ellipse (…) indicates a range, starting the alphanumeric and ending with the last alphanumeric.
-
-## Other Symbols
-
-<div>
-<table width="100%">
-  <tr>
-    <td width="10%">
-         <img title="" src="images/title_page/eye_.png" alt="" width="50" data-align="center">
-    </td> 
-    <td width = "90%"> Shown near a paragraph or example code indicates an unusual feature to which you should pay attention to syntax details for proper execution.
-  </tr>
-  <tr>
-    <td width="10%"><img title="" src="images/title_page/exclamation_mark.png" alt="" data-align="center" width="50">
-    </td>
-      <td width="90%">Shown near a paragraph or example code indicates the need to be careful or alert when using following the directions or code example.  It may cause a crash or problem there you may lose your work and may need to restart the Neo6502.
-    </td>
-  </tr></table>
-  </div>
-
-## Immediate -vs- Deferred Execution Commands
-
-Many, but not all commands can be executed immediately by just typing the command at the beginning of a line and pressing return.
-
-All commands (with a few exceptions) can be used within a program and can be preceded with a line number to add it to a program.   Execute those commands as part of the program by typing "run ↩︎”, and to see a listing of your program type “list ↩︎ “.
-
-## MOS -vs- mos
-
-There are several locations in the guide where the acronym “mos” is used.  To help ensure that the correct acronym expansion is interpreted correctly, here is a key:
-
-- **MOS** (all uppercase letters) = Machine Operating System.
-
-- **mos** (all lowercase letters) = metal oxide semiconductor.
-
-Also note, that the command “mos” can be both “MOS” and “mos” and the command comes from the uppercase “MOS” (Machine Operating System).

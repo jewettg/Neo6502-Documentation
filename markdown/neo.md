@@ -1,2342 +1,26 @@
--   [Welcome -- please
-    read!](#welcome-please-read){#toc-welcome-please-read}
-    -   [Please Note](#please-note){#toc-please-note}
--   [Document Formatting
-    Conventions](#document-formatting-conventions){#toc-document-formatting-conventions}
-    -   [Other Symbols](#other-symbols){#toc-other-symbols}
-    -   [Immediate -vs- Deferred Execution
-        Commands](#immediate--vs--deferred-execution-commands){#toc-immediate--vs--deferred-execution-commands}
-    -   [MOS -vs- mos](#mos--vs--mos){#toc-mos--vs--mos}
--   [Table of Contents](#table-of-contents){#toc-table-of-contents}
--   [About the Neo6502](#about-the-neo6502){#toc-about-the-neo6502}
-    -   [About the W65C02
-        processor](#about-the-w65c02-processor){#toc-about-the-w65c02-processor}
--   [Programming the
-    RP2040](#programming-the-rp2040){#toc-programming-the-rp2040}
-    -   [Prerequisites](#prerequisites){#toc-prerequisites}
-    -   [RP2040 programming for the
-        Neo6502](#rp2040-programming-for-the-neo6502){#toc-rp2040-programming-for-the-neo6502}
-    -   [RP2040 programming for the
-        Neo6502pc](#rp2040-programming-for-the-neo6502pc){#toc-rp2040-programming-for-the-neo6502pc}
-        -   [Programming
-            Troubleshooting](#programming-troubleshooting){#toc-programming-troubleshooting}
--   [Current Firmware](#current-firmware){#toc-current-firmware}
-    -   [NeoBasic (codename:
-        Morpheus)](#neobasic-codename-morpheus){#toc-neobasic-codename-morpheus}
-    -   [![A blue screen with white text Description automatically
-        generated](media/image16.jpeg){width="3.370967847769029in"
-        height="1.7866852580927384in"}Apple \]\[ and //e
-        Emulation](#a-blue-screen-with-white-text-description-automatically-generatedapple-and-e-emulation){#toc-a-blue-screen-with-white-text-description-automatically-generatedapple-and-e-emulation}
-    -   [Apple \]\[ TotalReplay
-        ](#apple-totalreplay){#toc-apple-totalreplay}
-    -   [![A screen with a white screen Description automatically
-        generated](media/image18.png){width="2.907645450568679in"
-        height="2.2822583114610673in"}Oric Atmos
-        ](#a-screen-with-a-white-screen-description-automatically-generatedoric-atmos){#toc-a-screen-with-a-white-screen-description-automatically-generatedoric-atmos}
--   [NeoBASIC ](#neobasic){#toc-neobasic}
-    -   [Programming Reference and Technical
-        Documentation](#programming-reference-and-technical-documentation){#toc-programming-reference-and-technical-documentation}
--   [NeoBASIC Technical
-    Reference](#neobasic-technical-reference){#toc-neobasic-technical-reference}
-    -   [Line Numbers](#line-numbers){#toc-line-numbers}
-    -   [Procedure
-        Placement](#procedure-placement){#toc-procedure-placement}
-    -   [Comments](#comments){#toc-comments}
-    -   [Binary Operators](#binary-operators){#toc-binary-operators}
-    -   [Functions](#functions){#toc-functions}
-        -   [Arithmetic and Boolean
-            Functions](#arithmetic-and-boolean-functions){#toc-arithmetic-and-boolean-functions}
-        -   [File System and I/O
-            Functions](#file-system-and-io-functions){#toc-file-system-and-io-functions}
-        -   [BASIC Interpreter
-            Functions](#basic-interpreter-functions){#toc-basic-interpreter-functions}
-    -   [](#section){#toc-section}
-        -   [String Functions](#string-functions){#toc-string-functions}
-        -   [Hardware Information
-            Functions](#hardware-information-functions){#toc-hardware-information-functions}
-    -   [Commands](#commands){#toc-commands}
-        -   [Flow Control Commands
-            ](#flow-control-commands){#toc-flow-control-commands}
-        -   [File System and I/O
-            Commands](#file-system-and-io-commands){#toc-file-system-and-io-commands}
-        -   [BASIC Commands](#basic-commands){#toc-basic-commands}
-        -   [Interfacing with
-            hardware](#interfacing-with-hardware){#toc-interfacing-with-hardware}
-        -   [Graphics
-            Commands](#graphics-commands){#toc-graphics-commands}
-        -   [Pixel Colors](#pixel-colors){#toc-pixel-colors}
-        -   [Sprite Commands](#sprite-commands){#toc-sprite-commands}
-    -   [Sprite Support
-        Functions](#sprite-support-functions){#toc-sprite-support-functions}
--   [Sounds and Music](#sounds-and-music){#toc-sounds-and-music}
-    -   [MOS Commands ](#mos-commands){#toc-mos-commands}
-    -   [MOS Error Codes](#mos-error-codes){#toc-mos-error-codes}
-    -   [File Attributes](#file-attributes){#toc-file-attributes}
-    -   [](#section-1){#toc-section-1}
-    -   [](#section-2){#toc-section-2}
-    -   [\
-        ](#section-3){#toc-section-3}
-    -   [The Inline
-        Assembler](#the-inline-assembler){#toc-the-inline-assembler}
-    -   [\[\] Operator](#operator){#toc-operator}
-    -   [Zero-Page Usage](#zero-page-usage){#toc-zero-page-usage}
--   [Raspberry PI 2040 Messaging
-    API](#raspberry-pi-2040-messaging-api){#toc-raspberry-pi-2040-messaging-api}
-    -   [Using RP2040 messaging API in
-        NeoBASIC](#using-rp2040-messaging-api-in-neobasic){#toc-using-rp2040-messaging-api-in-neobasic}
-        -   [Procedure to make Messaging API
-            call](#procedure-to-make-messaging-api-call){#toc-procedure-to-make-messaging-api-call}
-        -   [Messaging API calls with parameters in
-            NeoBASIC](#messaging-api-calls-with-parameters-in-neobasic){#toc-messaging-api-calls-with-parameters-in-neobasic}
-    -   [API Commands/Functions
-        ](#api-commandsfunctions){#toc-api-commandsfunctions}
-    -   [System](#system){#toc-system}
-    -   [Console](#console){#toc-console}
-    -   [File I/O](#file-io){#toc-file-io}
-    -   [Mathematics](#mathematics){#toc-mathematics}
-    -   [](#section-4){#toc-section-4}
-    -   [Graphics](#graphics){#toc-graphics}
-    -   [Sprites](#sprites){#toc-sprites}
-    -   [Controller](#controller){#toc-controller}
-    -   [Sound](#sound){#toc-sound}
-    -   [Turtle Graphics](#turtle-graphics){#toc-turtle-graphics}
-    -   [UEXT port I/O](#uext-port-io){#toc-uext-port-io}
-    -   [Mouse](#mouse){#toc-mouse}
-    -   [Blitter](#blitter){#toc-blitter}
-    -   [Editor](#editor){#toc-editor}
--   [Pascal for the
-    Neo6502](#pascal-for-the-neo6502){#toc-pascal-for-the-neo6502}
--   [Appendix A](#appendix-a){#toc-appendix-a}
-    -   [![A red circuit board with black and red components Description
-        automatically
-        generated](media/image20.png){width="2.4180555555555556in"
-        height="2.2631944444444443in"}Neo6502
-        ](#a-red-circuit-board-with-black-and-red-components-description-automatically-generatedneo6502){#toc-a-red-circuit-board-with-black-and-red-components-description-automatically-generatedneo6502}
-        -   [\
-            Hardware
-            Pictures](#hardware-pictures){#toc-hardware-pictures}
-    -   [Neo6502pc](#neo6502pc){#toc-neo6502pc}
-    -   [Features](#features){#toc-features}
-        -   [Neo6502pc -- Hardware
-            Pictures](#neo6502pc-hardware-pictures){#toc-neo6502pc-hardware-pictures}
-    -   [Neo6502pc Specific Hardware
-        Specifications](#neo6502pc-specific-hardware-specifications){#toc-neo6502pc-specific-hardware-specifications}
-        -   [Neo6502pc --
-            Schematic](#neo6502pc-schematic){#toc-neo6502pc-schematic}
-        -   [Neo6502pc -- 12 GPIO EXT1
-            Connector](#neo6502pc-12-gpio-ext1-connector){#toc-neo6502pc-12-gpio-ext1-connector}
--   [Shared Hardware](#shared-hardware){#toc-shared-hardware}
-    -   [Neo6502pc and Neo6502 -- W6502 Bus
-        Connector](#neo6502pc-and-neo6502-w6502-bus-connector){#toc-neo6502pc-and-neo6502-w6502-bus-connector}
-    -   [Neo6502pc and Neo6502 -- UEXT
-        Connectors](#neo6502pc-and-neo6502-uext-connectors){#toc-neo6502pc-and-neo6502-uext-connectors}
-    -   [Neo6502pc and Neo6502 -- Configuration Switch
-        Block](#neo6502pc-and-neo6502-configuration-switch-block){#toc-neo6502pc-and-neo6502-configuration-switch-block}
--   [Appendix A -- ASCII Character
-    Codes](#appendix-a-ascii-character-codes){#toc-appendix-a-ascii-character-codes}
-    -   [Non-Printable ASCII
-        Codes](#non-printable-ascii-codes){#toc-non-printable-ascii-codes}
-    -   [Printable ASCII Characters
-        Codes](#printable-ascii-characters-codes){#toc-printable-ascii-characters-codes}
--   [\
-    ](#section-5){#toc-section-5}
--   [Appendix V -- CREDITS and
-    LICENSE](#appendix-v-credits-and-license){#toc-appendix-v-credits-and-license}
--   [Appendix W -- Document Revision
-    History](#appendix-w-document-revision-history){#toc-appendix-w-document-revision-history}
--   [Appendix X -- About
-    Olimex](#appendix-x-about-olimex){#toc-appendix-x-about-olimex}
--   [Appendix Z -- Online
-    Resources](#appendix-z-online-resources){#toc-appendix-z-online-resources}
 
-![A yellow and white spiral Description automatically
-generated](media/image2.png){width="2.875in" height="2.875in"}![Blue
-text on a black background Description automatically
-generated](media/image3.png){width="6.5in"
-height="2.9451388888888888in"}
 
-![](media/image4.png){width="6.287588582677166in"
-height="1.120369641294838in"}
 
-![A red letter m and a white background Description automatically
-generated](media/image5.png){width="2.7857141294838144in"
-height="0.7686843832020998in"}
 
-  -----------------------------------------------------------------------
-  **OLIMEX Ltd.**\          **Contact:** Mr. Tsvetan Usunov**\
-  2 Pravda St., P.O. Box    Email:** <info@olimex.com>\
-  237,\                     **Voice:** +359-32-626259,
-  Plovdiv 4000 BULGARIA     +359-32-267407, +359-32-621270
-  ------------------------- ---------------------------------------------
+## --------------------------------------------------------
 
-  -----------------------------------------------------------------------
-
-# Welcome -- please read!
-
-Welcome to the modern retro computer world, where you can experience the
-technology from the 70s and 80s, but with a modern spin on it!
-
-This document covers both the Neo6502 and Neo6502pc computer. Detailed
-specifications and the differences between the two can be found in
-Appendix A.
-
-  -----------------------------------------------------------------------
-  Neither of the devices (the Neo6502 and Neo6502pc) are turn-key
-  solutions. Both devices require intermediate electronics and computer
-  use knowledge. While both devices have appeared in social media as an
-  out-of-the-box video game platform, it will require that you read this
-  document, so that you gain the best experience!
-  -----------------------------------------------------------------------
-
-  -----------------------------------------------------------------------
-
-## Please Note
-
-![A grey banner with white text Description automatically
-generated](media/image6.png){width="1.0083333333333333in"
-height="0.4354166666666667in"}Regardless of the function you are hoping
-to utilize the Neo6502 or Neo6502pc, you must be familiar with the
-process of reprogramming (also known as flashing firmware) the 2MB flash
-memory utilized by the RP2040. The firmware defines what function the
-Neo6502 or Neo6502pc will perform. Current firmware available provide a
-BASIC interpreter (NeoBASIC) that is continues to be developed and
-improved, an Apple \]\[ emulator (using the real W6502), and an Oric
-Atmos. Many and other firmware packages are currently being developed,
-so explore the various user forums, Discord, and Facebook to discover
-the endless possibilities of the Neo6502 and Neo6502pc.
-
-**Please read the Programming the RP2040 Section (page
-[7](#programming-the-rp2040))**
-
-**Both devices require that you obtain or supply the following for
-proper operation:**
-
-**Neo6502**
-
--   USB-C Power Source (5v, 1 amp minimum, more based on peripherals
-    attached).
-
--   A USB cable with a USB-A on one end, and the appropriate end that
-    will connect to your computer *(used to re-program the RP2040)*.
-
--   *Optional,* enclosing case for the Neo6502, *available from Olimex.*
-
--   *Optional*, USB-A Flash Drive (*highly recommend USB3, \~8 GB*),
-    formatted FAT32.
-
--   *Optional*, USB Hub (*Olimex USB-NeoHub is highly recommended for
-    compatibility*).
-
--   *Optional,* USB Gamepad.
-
-**Neo6502pc**
-
--   USB-C Power Source (5v, 1 amp minimum, more based on peripherals
-    attached).
-
--   A USB cable with a USB-C on one end, and the appropriate end that
-    will connect to your computer.
-
--   USB-A Flash Drive (highly recommend USB3, \~8 GB), formatted FAT32.
-
--   USB Keyboard *(wired and wireless w/USB dongle), bluetooth is not
-    supported.*
-
--   *Optional,* USB Gamepad.
-
-# Document Formatting Conventions
-
-In this documentation, the following standards will be used:
-
--   Code examples and parameters will be displayed in a fixed-space
-    font.
-
--   parameters are listed in italics, and have a descriptive name to
-    know what should be substituted, and the entire parameter is
-    replaced with the described value.
-
--   parameters enclosed with square braces \[\] are optional.
-
--   The symbol ↩︎ indicates the entry of the key carriage return (return
-    key).
-
--   The use of an ellipse (...) indicates a range, starting the
-    alphanumeric and ending with the last alphanumeric.
-
-## Other Symbols
-
-  --------------------------------------------------------------------------------------------------------------------
-                     ![Eye with solid                     Shown near a paragraph or example code indicates an unusual
-   fill](media/image8.svg){width="0.27007108486439196in"  feature to which you should pay attention to syntax details
-              height="0.17291666666666666in"}             for proper execution.
-  ------------------------------------------------------- ------------------------------------------------------------
-                   ![Warning with solid                   Shown near a paragraph or example code indicates the need to
-   fill](media/image10.svg){width="0.2557305336832896in"  be careful or alert when using following the directions or
-              height="0.2307688101487314in"}              code example. It may cause a crash or problem there you may
-                                                          lose your work and may need to restart the Neo6502.
-
-  --------------------------------------------------------------------------------------------------------------------
-
-## Immediate -vs- Deferred Execution Commands
-
-Many, but not all commands can be executed immediately by just typing
-the command at the beginning of a line and pressing return.
-
-All commands (with a few exceptions) can be used within a program and
-can be preceded with a line number to add it to a program. Execute those
-commands as part of the program by typing \"run ↩︎", and to see a listing
-of your program type "list ↩︎ ".
-
-## MOS -vs- mos
-
-There are several locations in the guide where the acronym "mos" is
-used. To help ensure that the correct acronym expansion is interpreted
-correctly, here is a key:
-
--   MOS (all uppercase letters) = Machine Operating System.
-
--   mos (all lowercase letters) = metal oxide semiconductor.
-
-Also note, that the command "mos" can be both "MOS" and "mos" and the
-command comes from the uppercase "MOS" (Machine Operating System).
-
-1.  **\
-    **
-
-# Table of Contents
-
-[Welcome -- please read!
-[2](#welcome-please-read)](#welcome-please-read)
-
-[Please Note [2](#please-note)](#please-note)
-
-[Document Formatting Conventions
-[3](#document-formatting-conventions)](#document-formatting-conventions)
-
-[Other Symbols [3](#other-symbols)](#other-symbols)
-
-[Immediate -vs- Deferred Execution Commands
-[3](#immediate--vs--deferred-execution-commands)](#immediate--vs--deferred-execution-commands)
-
-[MOS -vs- mos [3](#mos--vs--mos)](#mos--vs--mos)
-
-[Table of Contents [4](#table-of-contents)](#table-of-contents)
-
-[About the Neo6502 [7](#about-the-neo6502)](#about-the-neo6502)
-
-[About the W65C02 processor
-[7](#about-the-w65c02-processor)](#about-the-w65c02-processor)
-
-[Programming the RP2040
-[8](#programming-the-rp2040)](#programming-the-rp2040)
-
-[Prerequisites [8](#prerequisites)](#prerequisites)
-
-[RP2040 programming for the Neo6502
-[8](#rp2040-programming-for-the-neo6502)](#rp2040-programming-for-the-neo6502)
-
-[RP2040 programming for the Neo6502pc
-[9](#rp2040-programming-for-the-neo6502pc)](#rp2040-programming-for-the-neo6502pc)
-
-[Programming Troubleshooting
-[9](#programming-troubleshooting)](#programming-troubleshooting)
-
-[Current Firmware [10](#current-firmware)](#current-firmware)
-
-[NeoBasic (codename: Morpheus)
-[10](#neobasic-codename-morpheus)](#neobasic-codename-morpheus)
-
-[Apple \]\[ and //e Emulation
-[10](#a-blue-screen-with-white-text-description-automatically-generatedapple-and-e-emulation)](#a-blue-screen-with-white-text-description-automatically-generatedapple-and-e-emulation)
-
-[Apple \]\[ TotalReplay [11](#apple-totalreplay)](#apple-totalreplay)
-
-[Oric Atmos
-[11](#a-screen-with-a-white-screen-description-automatically-generatedoric-atmos)](#a-screen-with-a-white-screen-description-automatically-generatedoric-atmos)
-
-[NeoBASIC [12](#neobasic)](#neobasic)
-
-[Programming Reference and Technical Documentation
-[12](#programming-reference-and-technical-documentation)](#programming-reference-and-technical-documentation)
-
-[NeoBASIC Technical Reference
-[13](#neobasic-technical-reference)](#neobasic-technical-reference)
-
-[Line Numbers [13](#line-numbers)](#line-numbers)
-
-[Procedure Placement [13](#procedure-placement)](#procedure-placement)
-
-[Comments [13](#comments)](#comments)
-
-[Binary Operators [14](#binary-operators)](#binary-operators)
-
-[Functions [15](#functions)](#functions)
-
-[Arithmetic and Boolean Functions
-[15](#arithmetic-and-boolean-functions)](#arithmetic-and-boolean-functions)
-
-[File System and I/O Functions
-[16](#file-system-and-io-functions)](#file-system-and-io-functions)
-
-[BASIC Interpreter Functions
-[16](#basic-interpreter-functions)](#basic-interpreter-functions)
-
-[String Functions [17](#string-functions)](#string-functions)
-
-[Hardware Information Functions
-[18](#hardware-information-functions)](#hardware-information-functions)
-
-[Commands [20](#commands)](#commands)
-
-[Flow Control Commands
-[20](#flow-control-commands)](#flow-control-commands)
-
-[File System and I/O Commands
-[22](#file-system-and-io-commands)](#file-system-and-io-commands)
-
-[BASIC Commands [24](#basic-commands)](#basic-commands)
-
-[Interfacing with hardware
-[28](#interfacing-with-hardware)](#interfacing-with-hardware)
-
-[Graphics Commands [29](#graphics-commands)](#graphics-commands)
-
-[Pixel Colors [31](#pixel-colors)](#pixel-colors)
-
-[Sprite Commands [32](#sprite-commands)](#sprite-commands)
-
-[Sprite Support Functions
-[33](#sprite-support-functions)](#sprite-support-functions)
-
-[Sounds and Music [34](#sounds-and-music)](#sounds-and-music)
-
-[MOS Commands [35](#mos-commands)](#mos-commands)
-
-[MOS Error Codes [36](#mos-error-codes)](#mos-error-codes)
-
-[File Attributes [36](#file-attributes)](#file-attributes)
-
-[The Inline Assembler
-[38](#the-inline-assembler)](#the-inline-assembler)
-
-[\[\] Operator [38](#operator)](#operator)
-
-[Zero-Page Usage [39](#zero-page-usage)](#zero-page-usage)
-
-[Raspberry PI 2040 Messaging API
-[40](#raspberry-pi-2040-messaging-api)](#raspberry-pi-2040-messaging-api)
-
-[Using RP2040 messaging API in NeoBASIC
-[41](#using-rp2040-messaging-api-in-neobasic)](#using-rp2040-messaging-api-in-neobasic)
-
-[Procedure to make Messaging API call
-[41](#procedure-to-make-messaging-api-call)](#procedure-to-make-messaging-api-call)
-
-[Messaging API calls with parameters in NeoBASIC
-[41](#messaging-api-calls-with-parameters-in-neobasic)](#messaging-api-calls-with-parameters-in-neobasic)
-
-[API Commands/Functions
-[42](#api-commandsfunctions)](#api-commandsfunctions)
-
-[System [43](#system)](#system)
-
-[Console [44](#console)](#console)
-
-[File I/O [46](#file-io)](#file-io)
-
-[Mathematics [49](#mathematics)](#mathematics)
-
-[Graphics [51](#graphics)](#graphics)
-
-[Sprites [52](#sprites)](#sprites)
-
-[Controller [53](#controller)](#controller)
-
-[Sound [53](#sound)](#sound)
-
-[Turtle Graphics [54](#turtle-graphics)](#turtle-graphics)
-
-[UEXT port I/O [55](#uext-port-io)](#uext-port-io)
-
-[Mouse [56](#mouse)](#mouse)
-
-[Blitter [57](#blitter)](#blitter)
-
-[Editor [59](#editor)](#editor)
-
-[Pascal for the Neo6502
-[68](#pascal-for-the-neo6502)](#pascal-for-the-neo6502)
-
-[Appendix A [72](#appendix-a)](#appendix-a)
-
-[Neo6502
-[73](#a-red-circuit-board-with-black-and-red-components-description-automatically-generatedneo6502)](#a-red-circuit-board-with-black-and-red-components-description-automatically-generatedneo6502)
-
-[Hardware Pictures [73](#hardware-pictures)](#hardware-pictures)
-
-[Neo6502pc [75](#neo6502pc)](#neo6502pc)
-
-[Features [75](#features)](#features)
-
-[Neo6502pc -- Hardware Pictures
-[76](#neo6502pc-hardware-pictures)](#neo6502pc-hardware-pictures)
-
-[Neo6502pc Specific Hardware Specifications
-[78](#neo6502pc-specific-hardware-specifications)](#neo6502pc-specific-hardware-specifications)
-
-[Neo6502pc -- Schematic
-[78](#neo6502pc-schematic)](#neo6502pc-schematic)
-
-[Neo6502pc -- 12 GPIO EXT1 Connector
-[78](#neo6502pc-12-gpio-ext1-connector)](#neo6502pc-12-gpio-ext1-connector)
-
-[Shared Hardware [79](#shared-hardware)](#shared-hardware)
-
-[Neo6502pc and Neo6502 -- W6502 Bus Connector
-[79](#neo6502pc-and-neo6502-w6502-bus-connector)](#neo6502pc-and-neo6502-w6502-bus-connector)
-
-[Neo6502pc and Neo6502 -- UEXT Connectors
-[80](#neo6502pc-and-neo6502-uext-connectors)](#neo6502pc-and-neo6502-uext-connectors)
-
-[Neo6502pc and Neo6502 -- Configuration Switch Block
-[81](#neo6502pc-and-neo6502-configuration-switch-block)](#neo6502pc-and-neo6502-configuration-switch-block)
-
-[Appendix A -- ASCII Character Codes
-[82](#appendix-a-ascii-character-codes)](#appendix-a-ascii-character-codes)
-
-[Non-Printable ASCII Codes
-[82](#non-printable-ascii-codes)](#non-printable-ascii-codes)
-
-[Printable ASCII Characters Codes
-[82](#printable-ascii-characters-codes)](#printable-ascii-characters-codes)
-
-[Appendix V -- CREDITS and LICENSE
-[83](#appendix-v-credits-and-license)](#appendix-v-credits-and-license)
-
-[Appendix W -- Document Revision History
-[83](#appendix-w-document-revision-history)](#appendix-w-document-revision-history)
-
-[Appendix X -- About Olimex
-[84](#appendix-x-about-olimex)](#appendix-x-about-olimex)
-
-[Appendix Z -- Online Resources
-[85](#appendix-z-online-resources)](#appendix-z-online-resources)
-
-# About the Neo6502
-
-The Neo6502 is a standalone modern retro computer with a real W65C02
-processor and RP2040 co-processor. This small device works
-3-times-faster than any of the other recent 6502 competitors and
-30-times-faster than 6502 based machines from the 1980s.
-
-The "Neo" name was used two reasons: First it implies a modern design;
-Second came from the analogy with the movie The Matrix where the W65C02
-lives in virtual world -- thinking it has real memory, video and
-keyboard -- however in reality it is all virtual and emulated with the
-RP2040.
-
-![Blue text on a black background Description automatically
-generated](media/image11.png){width="2.120833333333333in"
-height="0.5666666666666667in"}Both the Neo6502 and Neo6502pc are
-open-source hardware (https://freedomdefined.org/OSHW), with all CAD
-files and firmware available to support the future development of
-software and enhancements to the hardware.
-
-There are two models available:
-
--   The Neo6502, an open circuit board computer (2 revisions, A & B).
-
--   The Neo6502pc, a Neo6502 enclosed in a 3D-printed case with a LCD
-    display, USB ports, UEXT and 6502 interface ports and more.
-
-More technical specifications can be found in Appendix A (page
-[42](#appendix-a)). More information about the Neo6502 project, please
-refer to the Neo6502 website: <http://www.neo6502.com>
-
-## About the W65C02 processor
-
-The W65C02, being a more modern 6502 than the old retro metal oxide
-semiconductor chip (mos) -- in that it can go much faster than was
-possible in the 1970s and 1980s. The W65C02 can even be overclocked to
-16 MHz, but on the Neo6502 it is running at 6.25 Mhz, which is closer to
-the clock speed of the Amiga and Atari ST than the Atari or C64, and a
-lot faster than when most of the retro games were being coded.
-
-The Neo6502 features a real W65C02S processor, which does all the
-computing with real timing versus emulation, but the real power of the
-machine coms from the RP2040 which provides the memory, video, keyboard
-input, and additional IO for SPI, I2C, UART, and so on.
-
-Things like complex math (multiplication, floating-point) and graphics
-are also handled by the RP2040, acting like a co-processor. Unlike other
-similar architectures, the RP2040 has direct memory access (providing
-the memory for the 6502) so there are no additional big data transfers
-between the chips to wait for, making things all much more efficient.
-
-The processor gets 64kb of RAM, but there is 2 MB of flash memory on
-board, access to USB flash drive for storage via USB or expansion port
-(for SD card support), and there is a 40-pin connector that offers up a
-bus of all the 6502 signals and pins that can be used to interface with
-or use for experiments. The UEXT ports already support quite a few
-modules from Olimex that support UEXT specification
-(<https://www.olimex.com/Products/Modules/>).
-
-# Programming the RP2040
-
-The process of programming the RP2040 is a fairly easy process,
-*[however]{.underline}*, it has a very specific manner and steps that
-must be followed to have a successful reprogramming.
-
-![A close-up of a computer Description automatically
-generated](media/image12.png){width="2.0558694225721785in"
-height="1.563675634295713in"}
-
-**NOTES**
-
--   Some firmware images require all switches of the configuration
-    switch block be in the on (closed) position.
-
-## Prerequisites
-
--   Your computer should be on, and you must be logged in and have the
-    desktop present. Best experience comes with no CPU intensive tasks
-    running on your computer.
-
--   You have the latest version of the firmware that you want to use
-    downloaded to your computer. *It is highly recommended that you
-    download the firmware file from the "source of truth" (the
-    developer's Github repository or website).\
-    \
-    *A firmware file come in various sizes and names, based on the
-    functionality it performs, however it will always have the uf2 file
-    extension.
-
--   Make sure the Neo6502 device has been powered down.
-
-## RP2040 programming for the Neo6502
-
-**Required hardware:**
-
--   A computer with a USB port and a modern operating system.
-
--   A Neo6502 computer.
-
--   A USB cable with a USB-A on one end, and the appropriate end that
-    will connect to your computer.
-
-![](media/image13.png){width="3.290904418197725in"
-height="2.081427165354331in"}**Steps:**
-
-1.  Connect the USB cable between your computer and the Neo6502 USB-A
-    port. *If you have a USB hub connected or any other device connected
-    to the USB-A port, please disconnect it during this process.*
-
-2.  Press and hold the \"boot\" button (bottom left, with the UEXT port
-    on the left and the W6502 bus on the bottom). *Ensure you have heard
-    or felt the button depress with a satisfying "click".*
-
-3.  Turn the power on.
-
-4.  Release the \"boot\" button.
-
-5.  A volume will appear on your computer with the name "RPI-RP2".
-
-6.  Copy the appropriate UF2 file to the "RPI-RP2" volume.
-
-7.  **Do not be alarmed**, as soon as the copy is finished, the volume
-    will disappear. *This indicates that the firmware has been
-    successfully uploaded and programming has begun and will only take a
-    few seconds*.
-
-8.  Reconnect the USB hub and other devices that were removed on step 1.
-
-## RP2040 programming for the Neo6502pc
-
-**Required hardware:**
-
--   A computer with a USB port and a modern operating system.
-
--   A Neo6502pc computer.
-
--   A USB cable with a USB-C on one end, and the appropriate end that
-    will connect to your computer.
-
-![A close-up of a blue box Description automatically
-generated](media/image14.png){width="2.4027777777777777in"
-height="1.225in"}**Steps:**
-
-1.  Connect the USB Cable between your computer and the Neo6502 USB-C
-    port (with the LCD facing up, the USB-C port on the left).
-
-2.  Slide the programming switch on the back of the Neo6502pc to the
-    programming position (with the switch facing up and in the upper
-    left corner -- move to the right-most position).
-
-3.  Press and hold the \"boot\" button (to the left of the programming
-    switch). *Ensure you have heard or felt the button depress with a
-    satisfying "click".*
-
-4.  Continue to press the "boot" button and turn the power on.
-
-5.  Release the \"boot\" button.
-
-6.  A volume will appear on your computer with the name "RPI-RP2".
-
-7.  Copy the appropriate UF2 file to the "RPI-RP2" volume.
-
-8.  **Do not be alarmed**, as soon as the copy is finished, the volume
-    will disappear. *This indicates that the firmware has been
-    successfully uploaded and programming has begun and will only take a
-    few seconds*. The Neo6502pc will automatically reboot using the new
-    firmware.
-
-9.  Move the programming switch back to "run" position.
-
-**SUCCESS**
-
-Based on the firmware that was just flashed, the Neo6502pc will now
-operate within the firmware function. Please refer to the documentation
-that comes with the firmware to know the next steps. The most popular
-firmware and their next steps are provided in this document.
-
-### Programming Troubleshooting
-
--   If you are using a Neo6502pc, ensure the programming switch in in
-    the "program" position.
-
--   
-
-# Current Firmware
-
-The following are accurate as of the August 4^th^, 2024 revision of this
-document.
-
-## NeoBasic (codename: Morpheus)
-
-Maintained by Paul Robson (paul@robsons.org.uk)
-
-GitHub Repository: <https://github.com/paulscottrobson/neo6502-firmware>
-
-Obtain the firmware from the repository link
-
-1.  ![A screen shot of a computer Description automatically
-    generated](media/image15.jpeg){width="2.4180555555555556in"
-    height="1.6215277777777777in"}Within the Github respository,
-    navigate to the releases section (right side)
-
-2.  Click on the link (release number). This will take you to the
-    releases list.
-
-3.  Locate and click the zip file to download it.
-
-4.  Unzip the file.
-
-5.  Locate the "firmware_usb.uf2" file.\
-    *The "*firmware_sd.uf2*" file is used when you are using the SDCard
-    adapter.*
-
-6.  Follow the directions above to program the RP2040 on page
-    [6](#about-the-neo6502).
-
-Please refer to the NeoBasic section (page [12](#neobasic)) for more
-information.
-
-## ![A blue screen with white text Description automatically generated](media/image16.jpeg){width="3.370967847769029in" height="1.7866852580927384in"}Apple \]\[ and //e Emulation
-
-Maintained by Veselin Sladkov ([veselin.sladkov@gmail.com]{.underline})
-
-Obtain the firmware from: <https://github.com/vsladkov/reload-emulator>
-
-The firmware source code is found on the repository; however, it is not
-compiled into a uf2 file. You can download the uf2 firmware file from
-Olimex's FTP site: <https://ftp.olimex.com/Neo6502/>
-
-1.  Click the link to open the Olimex FTP site.
-
-2.  Click and download the
-    "blank_disk_for_apple2e_code_development_apple2e_ProDOS_2_4_3.zip"
-    file.
-
-3.  Unzip it, and copy the "ProDOS_2_4_3.po" to a flash drive.
-
-4.  Follow the directions above to program the RP2040 on page
-    [6](#about-the-neo6502), with the "apple2e.uf2" file.
-
-You can replace the "ProDOS_2_4_3.po" with other disk images that can be
-found on the internet. Check out the Apple \]\[ section on the Internet
-Archive (<https://archive.org/details/softwarelibrary_apple_games>) as
-well as other locations.
-
-## Apple \]\[ TotalReplay 
-
-Maintained by Veselin Sladkov ([veselin.sladkov@gmail.com]{.underline})
-
-Obtain the firmware from: <https://github.com/vsladkov/reload-emulator>
-
-The firmware source code is found on the repository; however, it is not
-compiled into a uf2 file. You can download the uf2 firmware file from
-Olimex's FTP site: <https://ftp.olimex.com/Neo6502/>
-
-![Total Replay : Free Download, Borrow, and Streaming : Internet
-Archive](media/image17.png){width="2.8027777777777776in"
-height="2.1013888888888888in"}
-
-1.  Click the link to open the Olimex FTP site.
-
-2.  Click and download two files:
-
--   "Total Replay v5.1.hdv" file.
-
--   "apple2e-5.uf2" file.
-
-3.  Copy the "Total Replay v5.1.hdv" to a flash drive.
-
-4.  Follow the directions above to program the RP2040 on page
-    [6](#about-the-neo6502), with the "apple2e-5.uf2" firmware file.
-
-If successful, turning on the Neo6502 device, will present you with the
-TotalReplay title screen. All games can be played with a keyboard and
-some games support the USB gamepad, your milage by vary.
-
-## ![A screen with a white screen Description automatically generated](media/image18.png){width="2.907645450568679in" height="2.2822583114610673in"}Oric Atmos 
-
-Maintained by Veselin Sladkov ([veselin.sladkov@gmail.com]{.underline})
-
-Obtain the firmware from: <https://github.com/vsladkov/reload-emulator>
-
-The firmware source code is found on the repository; however, it is not
-compiled into a uf2 file.
-
-You can download the uf2 firmware file from Olimex's FTP site:
-<https://ftp.olimex.com/Neo6502/uf2/oric_960x540_372MHz.uf2>
-
-This is an older version, and no compiled version with updated firmware
-is available as a download, as you must have copies of the Oric ROMs.
-You will need to compile it yourself or ask folks on social media if an
-updated compiled version is available.
-
-![A blue circle and a black background Description automatically
-generated](media/image19.png){width="6.5in"
-height="1.1319444444444444in"}
-
-# NeoBASIC 
-
-*Written by Paul Robson*
-
-NeoBASIC runs very fast compared to most 6502-based home computers back
-in the day that were 2 Mhz or less. Compared to the FPGA-assisted
-Commander X16 that runs at 8 Mhz, it underperforms versus the Neo6502 in
-this BASIC line draw demo, partially due to the inefficient BASIC
-interpreter.
-
-You can program right on the Neo6502 using NeoBASIC or use the emulators
-that will run on Windows, Linux, and MacOS desktop operating systems.
-Cross-development is possible even with NeoBASIC by using the Python
-script to tokenize (text to BASIC binary) or detokenize (BASIC binary to
-text) your basic listing ready for execution.
-
-There are some NeoBASIC based games that have been written that really
-show off some of the very powerful features:
-
-+----------------------------------+-----------------------------------+
-| -   **Galaxians** arcade game    | -   **Frogger** arcade game       |
-|                                  |                                   |
-| -   **Robotron 2048**            | -   **PacMad** (PacMan like game) |
-|                                  |                                   |
-| -   **Tetris**                   | -   **Solitaire Suite** of card   |
-|                                  |     games                         |
-| -   **Space Invaders** arcade    |                                   |
-|     game                         | *\...and some many more!*         |
-+==================================+===================================+
-+----------------------------------+-----------------------------------+
-
-## Programming Reference and Technical Documentation
-
-The information that follows describes the NeoBASIC interpreter. It is
-for experienced programmers and includes explanations of all BASIC
-statements and functions, memory tables, sprite usage, and file formats.
-
-# NeoBASIC Technical Reference
-
-This version of BASIC was written with concepts brought over from more
-modern BASIC interpreters and other programming languages that make it
-more powerful and create a lot less spaghetti code[^1] that BASIC
-programs generally tended to create.
-
-## Line Numbers
-
-In NeoBASIC, line numbers are only used to provide an order to the
-program where declaration order is important. Line numbers should not be
-used as a reference within the program, and while GOSUB and GOTO are
-valid BASIC commands, their use is highly discouraged.
-
--   **Note:** If line numbers are used and the use of GOTO and GOSUB are
-    also used, a program could easily stop working properly in the event
-    that the program is ever "renumbered". A program can be renumbered
-    either deliberately using the "renumber" command or as a result of
-    editing a program with the built-in editor or using the library
-    command.
-
-It is recommended that a main program exist with functions and
-procedures used along with proper use of "for", "while" and "repeat"
-flow control programming syntax.
-
-## Procedure Placement
-
-+-----------------------------------------------------------------------+
-| 10 print "Say Something"                                              |
-|                                                                       |
-| 20 print "\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--"              |
-|                                                                       |
-| 25 a\$="Something to say!"                                            |
-|                                                                       |
-| 30 call saysomething(a\$)                                             |
-|                                                                       |
-| **40 end**                                                            |
-|                                                                       |
-| 50 proc saysomething(a\$)                                             |
-|                                                                       |
-| 60 print a\$                                                          |
-|                                                                       |
-| 70 endproc                                                            |
-+=======================================================================+
-+-----------------------------------------------------------------------+
-
-Procedure declarations should be at the end of a program, with a
-preceding "end" statement before the first "proc" statement. Should
-NeoBASIC encounter a proc statement during execution, the program will
-halt and present a syntax error.
-
-## Comments
-
-A code should include comments. Good comments don\'t repeat the code or
-explain it. They clarify its intent. Comments should explain, at a
-higher level of abstraction than the code, what you\'re trying to do.
-
-Comments can be added to code as a line by itself or added to the end of
-an existing line by using the single quote following by your comment.
-Comments should be limited to alphanumeric, and caution should be used
-when using quotes and other special characters.
-
-Note, after entering a comment, the BASIC tokenizer will display it as a
-single quote followed by you comment within double quotes. A comment is
-basically an ignored string at execution.
-
-## Binary Operators
-
-If you remember "PEMDAS" (parenthesis, exponents, multiplication,
-division, addition, subtraction) or \"Please Excuse My Dear Aunt Sally\"
-from grade school, this table is an expansion of that.
-
-  ------------------------------------------------------------------------
-   Precedence   Operator  Notes
-  ------------ ---------- ------------------------------------------------
-       4           \*     Multiplication operator
-
-       4           /      Forward slash is floating point divide. 22/7 is
-                          3.142857
-
-       4           \\     Backward slash is integer divide, 22\\7 is 3
-
-       4           \%     Modulus of integer division ignoring signs
-
-       4          \>\>    Logical shift right, highest bit zero
-
-       4          \<\<    Logical shift left
-
-       3           \+     Addition operator
-
-       3           \-     Subtraction operator
-
-       2           \<     Less than
-
-       2          \<=     Less than or equal
-
-       2           \>     Great than
-
-       2          \>=     Greater than or equal
-
-       2          \<\>    Not equal to
-
-       2           =      Equal to
-
-       1           &      Binary AND operator on integers
-
-       1           \|     Binary OR operator on integers
-
-       1           \^     Binary XOR operator on integers
-  ------------------------------------------------------------------------
-
-In the above table, an expression using the above operators will
-evaluate\
-as -1 for true, and 0 for false.
-
-**Example:**
-
-print (1+2) \> (1+1)
-
-**Result:** -1 *(true)*
-
-print (1\*3) = (2\\4)
-
-**Result:** 0 *(false)*
-
-## Functions
-
-### Arithmetic and Boolean Functions
-
-+----------------+-----------------------------------------------------+
-| Function       | Description (*function and return value)*           |
-+================+=====================================================+
-| atan(*n*)      | Calculate the arctangent (the inverse tangent       |
-|                | function) of n in degrees                           |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print atan(90)                                      |
-|                |                                                     |
-|                | 89.363411                                           |
-+----------------+-----------------------------------------------------+
-| atan2(*y,x*)   | Calculates the arctangent (the inverse tangent      |
-|                | function) of y,x \                                  |
-|                | if x equals 0, atan2 returns π/2\                   |
-|                | if y is positive, -π/2 if y is negative, or 0 if y  |
-|                | is 0.                                               |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print atan2(-1, 0)                                  |
-|                |                                                     |
-|                | -90.000000                                          |
-+----------------+-----------------------------------------------------+
-| cos(*n*)       | Calculate the cosine of n (n must be in degrees)    |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print cos(180)                                      |
-|                |                                                     |
-|                | -1.000000                                           |
-|                |                                                     |
-|                | print cos(90)                                       |
-|                |                                                     |
-|                | -0.000000                                           |
-+----------------+-----------------------------------------------------+
-| exp(*n*)       | Calculates the exponential value of a               |
-|                | floating-point argument n (e^n^, where e equals     |
-|                | 2.17128128\...)                                     |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print exp(0)                                        |
-|                |                                                     |
-|                | 1.000000                                            |
-|                |                                                     |
-|                | print exp(2)                                        |
-|                |                                                     |
-|                | 7.389056                                            |
-+----------------+-----------------------------------------------------+
-| FALSE          | Return constant 0, a known falsey value.            |
-|                |                                                     |
-|                | The value zero is always consider false.            |
-+----------------+-----------------------------------------------------+
-| int(*n*)       | Return the whole part of the float value n.         |
-|                | Integers are unchanged.                             |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print int(22/7)                                     |
-|                |                                                     |
-|                | 3                                                   |
-+----------------+-----------------------------------------------------+
-
-**\
-**
-
-+----------------+-----------------------------------------------------+
-| log(*n*)       | Calculate the natural logarithm (e.g. ln2) of n.    |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print log(0)                                        |
-|                |                                                     |
-|                | -inf                                                |
-|                |                                                     |
-|                | print exp(10)                                       |
-|                |                                                     |
-|                | 2.302585                                            |
-+----------------+-----------------------------------------------------+
-| max(*a,b*)     | Return the largest of a and b (numbers or strings)  |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print max(50,100)                                   |
-|                |                                                     |
-|                | 100\                                                |
-|                | print max("Hello", "World")                         |
-|                |                                                     |
-|                | World                                               |
-+----------------+-----------------------------------------------------+
-| min(*a,b*)     | Return the smallest of a and b (numbers or strings) |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print min(50,100)                                   |
-|                |                                                     |
-|                | 50                                                  |
-|                |                                                     |
-|                | print max("Hello", "World")                         |
-|                |                                                     |
-|                | Hello                                               |
-+----------------+-----------------------------------------------------+
-| pow(*a,b*)     | Returns a raised to the power b; the result is      |
-|                | always floating point.                              |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print pow(2,0)                                      |
-|                |                                                     |
-|                | 1.000000                                            |
-|                |                                                     |
-|                | print pow(2,8)                                      |
-|                |                                                     |
-|                | 256.000000                                          |
-+----------------+-----------------------------------------------------+
-| rand(*n*)      | Returns a random integer, where 0 \< x \< n.\       |
-|                | *The value returned will be between 0 and n-1.*     |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print rand(50)                                      |
-|                |                                                     |
-|                | 33                                                  |
-+----------------+-----------------------------------------------------+
-| rnd(0)         | Returns a random number where 0 \< x \< 1.\         |
-|                | *The value (zero) passed is ignored.*               |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print rand(0)                                       |
-|                |                                                     |
-|                | 0.179750                                            |
-+----------------+-----------------------------------------------------+
-
-**\
-**
-
-+----------------+-----------------------------------------------------+
-| Function       | Description (*function and return value)*           |
-+================+=====================================================+
-| sin(*n*)       | Calculate the sine of n (n must be in degrees)      |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print sin(90)                                       |
-|                |                                                     |
-|                | 1.000000                                            |
-|                |                                                     |
-|                | print sin(180)                                      |
-|                |                                                     |
-|                | -0.000000                                           |
-+----------------+-----------------------------------------------------+
-| sqr(*n*)       | Calculates the square root of n                     |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print sqr(9)                                        |
-|                |                                                     |
-|                | 3.000000                                            |
-|                |                                                     |
-|                | print sqr(64)                                       |
-|                |                                                     |
-|                | 8.000000                                            |
-+----------------+-----------------------------------------------------+
-| tan(*n*)       | Calculates the tangent of n (n must be in degrees)  |
-|                |                                                     |
-|                | **Example:**\                                       |
-|                | print tan(45)                                       |
-|                |                                                     |
-|                | 1.000000                                            |
-|                |                                                     |
-|                | print tan(135)                                      |
-|                |                                                     |
-|                | -1.000000                                           |
-+----------------+-----------------------------------------------------+
-| TRUE           | Return constant -1, a known truthy value.           |
-|                |                                                     |
-|                | *Any value greater than 0 or less than 0 is         |
-|                | considered true.*                                   |
-+----------------+-----------------------------------------------------+
-
-### File System and I/O Functions
-
-+-------------------+--------------------------------------------------+
-| Function          | Description (*function and return value)*        |
-+===================+==================================================+
-| eof(*filename*)   | Returns non-zero value if at end of file         |
-|                   | *filename*.                                      |
-+-------------------+--------------------------------------------------+
-| e                 | Returns true (-1) if the file *filename* exists, |
-| xists(*filename*) | false (0) otherwise.                             |
-+-------------------+--------------------------------------------------+
-| locale *string*   | Sets the locale to the ISO 3166-1 alpha-2        |
-|                   | country code *string*\                           |
-|                   | e.g. locale \"de\" for Germany, "us" for United  |
-|                   | States of America.\                              |
-|                   | \                                                |
-|                   | Country code list:                               |
-|                   | <h                                               |
-|                   | ttps://en.wikipedia.org/wiki/ISO_3166-1_alpha-2> |
-+-------------------+--------------------------------------------------+
-| mos(command)      | Returns zero if the command was successful, and  |
-|                   | non-zero error if it was unsuccessful or         |
-|                   | generated an error.                              |
-|                   |                                                  |
-|                   | **See**: MOS Commands (page [32](#mos-commands)) |
-+-------------------+--------------------------------------------------+
-
-### BASIC Interpreter Functions
-
-  -----------------------------------------------------------------------
-  Function             Description (*function and return value)*
-  -------------------- --------------------------------------------------
-  err                  Current error number
-
-  erl                  Current error line number
-  -----------------------------------------------------------------------
-
-## 
-
-### String Functions
-
-+-------------------+--------------------------------------------------+
-| Function          | Description (*function and return value)*        |
-+===================+==================================================+
-| asc(*s\$*)        | Return ASCII value of first character or zero    |
-|                   | for empty string.                                |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print asc("A")                                   |
-|                   |                                                  |
-|                   | 65                                               |
-|                   |                                                  |
-|                   | print asc("Z")                                   |
-|                   |                                                  |
-|                   | 90                                               |
-+-------------------+--------------------------------------------------+
-| chr\$(*n*)        | Convert ASCII decimal value to a character.      |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print chr\$(65)                                  |
-|                   |                                                  |
-|                   | A                                                |
-|                   |                                                  |
-|                   | print chr\$(90)                                  |
-|                   |                                                  |
-|                   | Z                                                |
-+-------------------+--------------------------------------------------+
-| instr(            | Returns the first position of search\$ in str\$, |
-| *str\$,search\$*) | indexed from 1. Returns zero if not found.       |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print instr\$("xyzzy","y")                       |
-|                   |                                                  |
-|                   | 2                                                |
-|                   |                                                  |
-|                   | print instr\$("xyzzy","a")                       |
-|                   |                                                  |
-|                   | 0                                                |
-+-------------------+--------------------------------------------------+
-| isval(*s\$*)      | Converts string to number, returns -1 if okay, 0 |
-|                   | if fails.                                        |
-+-------------------+--------------------------------------------------+
-| left\$(*a\$,n*)   | Left most number of characters (n) of a\$.       |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print left\$("heart", 4)                         |
-|                   |                                                  |
-|                   | hear                                             |
-+-------------------+--------------------------------------------------+
-| len(*a\$*)        | Return length of string in characters.           |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print len("xyzzy")                               |
-|                   |                                                  |
-|                   | 5                                                |
-+-------------------+--------------------------------------------------+
-| lower\$(*a\$*)    | Convert a string to lower case.                  |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print lower\$("ABCXYZ")                          |
-|                   |                                                  |
-|                   | abcxyz                                           |
-+-------------------+--------------------------------------------------+
-| mid\$             | Characters from a\$ starting at f (1 indexed), s |
-| (*a\$,f*\[*,s*\]) | characters, s is optional and defaults to the    |
-|                   | rest of the line.                                |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print mid\$("xyzzy",3,2)                         |
-|                   |                                                  |
-|                   | zz                                               |
-+-------------------+--------------------------------------------------+
-
-**\
-**
-
-+-------------------+--------------------------------------------------+
-| Function          | Description (*function and return value)*        |
-+===================+==================================================+
-| right\$(*a\$,n*)  | Rightmost n characters of a\$.                   |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print right\$("smart", 3)                        |
-|                   |                                                  |
-|                   | art                                              |
-+-------------------+--------------------------------------------------+
-| spc(*n*)          | Returns a string containing the number (n)       |
-|                   | spaces.                                          |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print "Start"+spc(20)+"End"                      |
-|                   |                                                  |
-|                   | Start End                                        |
-+-------------------+--------------------------------------------------+
-| str\$(*n*)        | Convert a number (n) to a string.                |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print str\$(100)                                 |
-|                   |                                                  |
-|                   | 100                                              |
-|                   |                                                  |
-|                   | *Not really a good example, except that it       |
-|                   | returns a string of three characters 1, 0, 0, or |
-|                   | "100".*                                          |
-+-------------------+--------------------------------------------------+
-| upper\$(*a\$*)    | Convert a string to upper case.                  |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print lower\$("abcxyz")                          |
-|                   |                                                  |
-|                   | ABCXYZ                                           |
-+-------------------+--------------------------------------------------+
-| val(*s\$*)        | Convert string to number, error if bad number.   |
-|                   |                                                  |
-|                   | **Example:**\                                    |
-|                   | print val("150")                                 |
-|                   |                                                  |
-|                   | 150\                                             |
-|                   | *Not really a good example, except that it       |
-|                   | returns an integer of the string "150", which is |
-|                   | 150.*                                            |
-+-------------------+--------------------------------------------------+
-
-### Hardware Information Functions
-
-+----------------------+-----------------------------------------------+
-| Function             | Description (*function and return value)*     |
-+======================+===============================================+
-| alloc(*n*)           | Allocate n bytes of memory, return address    |
-+----------------------+-----------------------------------------------+
-| analog(*n*)          | Read voltage level on pin n \-- returns a     |
-|                      | value from 0 to 4095                          |
-+----------------------+-----------------------------------------------+
-| deek(*a*)            | Read word value at a                          |
-+----------------------+-----------------------------------------------+
-| event(*v,r*)         | event takes an integer variable and a fire    |
-|                      | rate (r) in 1/100 seconds, and uses the       |
-|                      | integer variable to return -1 at that rate.   |
-|                      | If the value in v is zero, it resets (if you  |
-|                      | pause say), if the value in v is -1 the timer |
-|                      | will not fire \-- to unfreeze, set it to zero |
-|                      | and it will resynchronize.                    |
-+----------------------+-----------------------------------------------+
-| havemouse()          | Return non-zero if a mouse is connected.      |
-|                      |                                               |
-|                      | **Example:**                                  |
-|                      |                                               |
-|                      | print havemouse()                             |
-|                      |                                               |
-|                      | 1                                             |
-+----------------------+-----------------------------------------------+
-| Himem                | First byte after end of memory \-- the stack  |
-|                      | is allocated below here, and string memory    |
-|                      | below that.                                   |
-+----------------------+-----------------------------------------------+
-| inkey\$()            | Return the key stroke if one is in the        |
-|                      | keyboard buffer, otherwise returns a n empty  |
-|                      | string.                                       |
-|                      |                                               |
-|                      | **Example:**                                  |
-|                      |                                               |
-|                      | 10 a\$ = inkey\$()                            |
-|                      |                                               |
-|                      | 15 if a\$ \<\> "":                            |
-|                      |                                               |
-|                      | 20 print a\$;                                 |
-|                      |                                               |
-|                      | 25 endif                                      |
-|                      |                                               |
-|                      | 30 goto 10                                    |
-|                      |                                               |
-|                      | Program will output the key pressed to the    |
-|                      | screen.                                       |
-+----------------------+-----------------------------------------------+
-| idevice(*device*)    | Returns true if i2c device present.           |
-+----------------------+-----------------------------------------------+
-| irea                 | Read byte from I2C Device Register            |
-| d(*device,register*) |                                               |
-+----------------------+-----------------------------------------------+
-| joycount()           | Read the number of attached joypads, not      |
-|                      | including keyboard emulation of one.          |
-+----------------------+-----------------------------------------------+
-| joypad(              | Reads the current joypad. The return value    |
-| \[*index*\],*dx,dy*) | has bit 0 set if A is pressed, bit 1 set if B |
-|                      | is pressed. Values -1,0 or 1 are placed into  |
-|                      | dx,dy representing movement on the D-Pad. If  |
-|                      | there is no gamepad plugged in (*at the time  |
-|                      | of writing it doesn\'t work*) the key         |
-|                      | equivalents are WASDOP and the cursor keys.   |
-|                      | If \[index\] is provided it is a specific     |
-|                      | joypad (from 1,0 is the keyboard), otherwise  |
-|                      | it is a composite of all of them.             |
-+----------------------+-----------------------------------------------+
-
-**\
-**
-
-**Hardware Information Functions** (*continued)*
-
-+----------------------+-----------------------------------------------+
-| Function             | Description (*function and return value)*     |
-+======================+===============================================+
-| key(n)               | Return the state of the given key. The key is |
-|                      | the USB HID key scan code n.                  |
-+----------------------+-----------------------------------------------+
-| mouse                | Reads the mouse. The return value indicates   |
-| (*x,y*\[,*scroll*\]) | button state (bit 0 left, bit 1 right), and   |
-|                      | the mouse position and the scrolling wheel    |
-|                      | position are updated into the given           |
-|                      | variables.                                    |
-+----------------------+-----------------------------------------------+
-| notes(*c*)           | Return the number of notes outstanding on     |
-|                      | channel c including the one currently playing |
-|                      | \-- so will be zero when the channel goes     |
-|                      | silent.                                       |
-+----------------------+-----------------------------------------------+
-| page                 | Return the address of the program base (e.g.  |
-|                      | the variable table)                           |
-+----------------------+-----------------------------------------------+
-| peek(*a*)            | Read byte value at a                          |
-+----------------------+-----------------------------------------------+
-| pin(*n*)             | Return value on UEXT pin n if input, output   |
-|                      | latch value if output.                        |
-+----------------------+-----------------------------------------------+
-| point(*x,y*)         | Read the screen pixel at coordinates x,y.     |
-|                      | This is graphics data only.                   |
-+----------------------+-----------------------------------------------+
-| spoint(*x,y*)        | Reads the color index on the sprite layer. 0  |
-|                      | is transparency                               |
-+----------------------+-----------------------------------------------+
-| tab(*n*)             | Advance to screen column n if not past it     |
-|                      | already.                                      |
-+----------------------+-----------------------------------------------+
-| time()               | Return time since power on in 1/100 seconds.  |
-|                      |                                               |
-|                      | **Example:**                                  |
-|                      |                                               |
-|                      | print time()                                  |
-|                      |                                               |
-|                      | 930150 *or 9301.5 seconds.*                   |
-+----------------------+-----------------------------------------------+
-| uhasdata()           | Return true if there is data in the UART      |
-|                      | Receive buffer.                               |
-+----------------------+-----------------------------------------------+
-| vblanks()            | Return the number of vertical-blanks since    |
-|                      | power on. This is updated at the start of the |
-|                      | vertical-blank period.                        |
-+----------------------+-----------------------------------------------+
-
-## Commands
-
-### Flow Control Commands 
-
-+-------------------+--------------------------------------------------+
-| Control Structure | Description                                      |
-+===================+==================================================+
-| do                | Provides an infinite loop structure, with the    |
-|                   | ability to use the exit command to break out of  |
-| \...\             | the loop at any point.                           |
-| *exit*\           |                                                  |
-| \...\             | **Example:**                                     |
-| loop              |                                                  |
-|                   | 10 index = 0                                     |
-|                   |                                                  |
-|                   | 20 **do**                                        |
-|                   |                                                  |
-|                   | 30 print "Hello World!"                          |
-|                   |                                                  |
-|                   | 40 index = index + 1                             |
-|                   |                                                  |
-|                   | 50 if index \> 10 then **exit**                  |
-|                   |                                                  |
-|                   | 60 **loop**                                      |
-+-------------------+--------------------------------------------------+
-| end               | End the current running program                  |
-|                   |                                                  |
-|                   | *When defining procedures, ensure that the "end" |
-|                   | precedes any of the procedure definitions so     |
-|                   | program execution to not continue into the       |
-|                   | procedure declaration section, else a syntax     |
-|                   | error will result.*                              |
-+-------------------+--------------------------------------------------+
-| for *var* =       | Provides a controlled loop (for / next) using a  |
-| *start* to/downto | range of values.\                                |
-| *end*             | *Note this is non-standard for/loop control, as  |
-|                   | there are limitations.\                          |
-| \...              | *Limitations:                                    |
-|                   |                                                  |
-| next *var*        | -   The index must be an integer.                |
-|                   |                                                  |
-|                   | -   The step is controlled used "to" (1) or      |
-|                   |     "downto" (-1).                               |
-|                   |                                                  |
-|                   | next cannot specify an index and cannot be used  |
-|                   | to terminate loops (*using the wrong index).*    |
-|                   | Execution must operate in order and flow cannot  |
-|                   | be stopped arbitrarily. *The variable after next |
-|                   | is ignored.*                                     |
-|                   |                                                  |
-|                   | **Example:**                                     |
-|                   |                                                  |
-|                   | 10 **for** count = 10 **downto** 1               |
-|                   |                                                  |
-|                   | 20 print count                                   |
-|                   |                                                  |
-|                   | 30 **next** count                                |
-|                   |                                                  |
-|                   | 40 print "Blast off!"                            |
-+-------------------+--------------------------------------------------+
-
-**\
-**
-
-+-------------------+--------------------------------------------------+
-| Control Structure | Description                                      |
-+===================+==================================================+
-|                   |                                                  |
-+-------------------+--------------------------------------------------+
-| gosub *expr* [^2] | Call subroutine at line number. A return command |
-|                   | will return control to the line after the gosub  |
-|                   | call.                                            |
-+-------------------+--------------------------------------------------+
-| goto *expr*[^3]   | Transfer execution to a line number.             |
-+-------------------+--------------------------------------------------+
-| return[^4]        | *See gosub.*                                     |
-+-------------------+--------------------------------------------------+
-| if *expr* then    | Provide a single conditional, where execution is |
-| *nn*[^5]          | transferred to line number nn if the {expr} is   |
-|                   | true.                                            |
-|                   |                                                  |
-|                   | **\                                              |
-|                   | NOTE:** if {expr} goto *nn* does not work.       |
-+-------------------+--------------------------------------------------+
-| on error *nn*[^6] | Install an error handler, when execution is      |
-|                   | transferred to line number nn when an error      |
-|                   | occurs (effectively a goto command).             |
-+-------------------+--------------------------------------------------+
-
-**\
-**
-
-**Flow Control Commands** (*continued...)*
-
-+-------------------+--------------------------------------------------+
-| Control Structure | Description                                      |
-+===================+==================================================+
-| if {expr}:\       | Provides an if-then-else condition. More than    |
-| ..\               | one line can be used between if and endif or     |
-| else\             | between if and else and else and endif. *The     |
-| ..                | else clause is optional.*                        |
-|                   |                                                  |
-| endif             | Code between if and else will only execute if    |
-|                   | the {expr} evaluates as **true**, and the code   |
-|                   | between else and endif will only execute if the  |
-|                   | {expr} evaluates as **false**.                   |
-+-------------------+--------------------------------------------------+
-| repeat            | Provides a finite loop structure that will end   |
-|                   | when the expression following the until          |
-| ..                | evaluates as true, else it will repeat while the |
-|                   | expressing following the until evaluates as      |
-| until *expr*      | false.                                           |
-+-------------------+--------------------------------------------------+
-| run               | Will execute the program in memory at the first  |
-|                   | and lowest line number.                          |
-+-------------------+--------------------------------------------------+
-| stop              | Will terminate the program with an error.        |
-+-------------------+--------------------------------------------------+
-| wait *s*          | Waits for {s}, where {s}is 1/100 seconds.        |
-+-------------------+--------------------------------------------------+
-| while *expr*      | Provides a finite loop structure that will end   |
-|                   | when the expression following the while          |
-| \...              | evaluates as false, else it will repeat while    |
-|                   | the expressing following the while evaluates as  |
-| wend              | true.                                            |
-+-------------------+--------------------------------------------------+
-
-### File System and I/O Commands
-
-+------------------------+---------------------------------------------+
-| Command                | Description                                 |
-+========================+=============================================+
-| close *\[handle\]*     | Close a file by handle.                     |
-|                        |                                             |
-|                        | The handle is optional, and if not          |
-|                        | provided, all files will be closed.         |
-+------------------------+---------------------------------------------+
-| input                  | Reads a sequence of variables from the open |
-| #{channel},{var},{var} | file.                                       |
-+------------------------+---------------------------------------------+
-| ireceive *d*,*a,s*     | Receive bytes starting at a, count s to or  |
-|                        | from device d.                              |
-+------------------------+---------------------------------------------+
-| itransmit *d*,*a,s*    | Send bytes starting at a, count s to or     |
-|                        | from device d.                              |
-+------------------------+---------------------------------------------+
-| isend *device*,*data*  | Send data to i2c {device}; this is comma    |
-|                        | separated data, numbers or strings. If a    |
-|                        | semicolon is used as a separator e.g. 4137; |
-|                        | then the constant is sent as a 16-bit       |
-|                        | value.                                      |
-+------------------------+---------------------------------------------+
-| iwrite *dev*,*reg*,*b* | Write byte to I2C Device Register           |
-+------------------------+---------------------------------------------+
-| load                   | Load file to BASIC space or given address.  |
-| \"                     | The last quote is optional if the parameter |
-| *file*\[\",*address*\] | *address is not used.*                      |
-+------------------------+---------------------------------------------+
-| mos \"command\"        | Execute Machine Operating System            |
-|                        |                                             |
-|                        | (MOS) command within the quotes.            |
-|                        |                                             |
-|                        | Commands include cat, cd, md, copy, del,    |
-|                        | and more.                                   |
-|                        |                                             |
-|                        | **See**: MOS Commands (page                 |
-|                        | [32](#mos-commands))                        |
-+------------------------+---------------------------------------------+
-
-**\
-**
-
-**File System and I/O Commands** (*continued...)\
-*
-
-+------------------------+---------------------------------------------+
-| Command                | Description                                 |
-+========================+=============================================+
-| open input\|output     | Open a file for input or output on the      |
-| \[                     | given channel, using the given file name.   |
-| *channel*\]\[,*file*\] | Output erases the current file. This gives  |
-|                        | an error if the file does not exist; rather |
-|                        | than trap this error it is recommended to   |
-|                        | use the exists() function if you think the  |
-|                        | file may not be present.                    |
-+------------------------+---------------------------------------------+
-| print \[*string* \|    | This will output the contents that          |
-| *var*\]                | following the command at the current cursor |
-|                        | position. A string is encapsulated in       |
-|                        | double-quotes. A var can be a string or     |
-|                        | number variable.                            |
-|                        |                                             |
-|                        | You can concatenate strings and vars        |
-|                        | together with the + symbol. If you end a    |
-|                        | print statement with a semi-colon, then the |
-|                        | next print will follow at the end of this   |
-|                        | print, effectively appending to the output. |
-|                        |                                             |
-|                        | Use str\$(*var*) to concatenate an integer  |
-|                        | with the string.                            |
-+------------------------+---------------------------------------------+
-| print                  | Writes a sequence of expressions to the     |
-| #{                     | open file.                                  |
-| channel},{expr},{expr} |                                             |
-+------------------------+---------------------------------------------+
-| print line             | Prints a line to an output channel as an    |
-| \                      | ASCII file, in LF format (e.g. lines are    |
-| #*channel*.*var*.*var* | separated by character code 10). This can   |
-|                        | be mixed with the above format, *but* the   |
-|                        | sequence has to be the same; you can\'t     |
-|                        | write a string using print line and read it |
-|                        | back with input and vice versa. All         |
-|                        | variables must be strings.                  |
-+------------------------+---------------------------------------------+
-| run \"*program*\"      | Load & Run program. *The last quotation     |
-|                        | mark is optional.*                          |
-+------------------------+---------------------------------------------+
-| save                   | Save BASIC program or memory from *adr*     |
-| \                      | length *sz*. The last quote is option if    |
-| "file\[\",*adr*,*sz*\] | the *adr or sz parameters are not used.*    |
-+------------------------+---------------------------------------------+
-| sreceive *a,s*         | Receive bytes starting at a, count s to SPI |
-|                        | device                                      |
-+------------------------+---------------------------------------------+
-| stransmit *a,s*        | Send bytes starting at a, count s to SPI    |
-|                        | device                                      |
-+------------------------+---------------------------------------------+
-| ssend *data*           | Send data to SPI device; this is comma      |
-|                        | separated data, numbers or strings. If a    |
-|                        | semicolon is used as a separator e.g. 4137; |
-|                        | then the constant is sent as a 16-bit       |
-|                        | value.                                      |
-+------------------------+---------------------------------------------+
-| ureceive *d*,*a,s*     | Receive bytes to/from the UART starting at  |
-|                        | a, count s                                  |
-+------------------------+---------------------------------------------+
-| utransmit *d*,*a,s*    | Send bytes to/from the UART starting at a,  |
-|                        | count s                                     |
-+------------------------+---------------------------------------------+
-| usend *device*, *data* | Send data to UART; this is comma separated  |
-|                        | data, numbers or strings. If a semicolon is |
-|                        | used                                        |
-+------------------------+---------------------------------------------+
-
-### BASIC Commands
-
-+------------------------+---------------------------------------------+
-| Command                | Description                                 |
-+========================+=============================================+
-| \' {string}            | Comment. This is a string for syntactic     |
-|                        | consistency. If you type in the comment     |
-|                        | without the speech marks, which is easier,  |
-|                        | the speech marks will be added              |
-|                        | automatically. See comments (page           |
-|                        | [13](#comments)).                           |
-+------------------------+---------------------------------------------+
-| assert                 | Error generated if {expr} is zero, with     |
-| *expr*\[,*msg*\]       | optional message.                           |
-+------------------------+---------------------------------------------+
-| cls                    | Clear the graphics screen to current        |
-|                        | background color. This does not clear       |
-|                        | sprites.                                    |
-+------------------------+---------------------------------------------+
-| cursor *x*,*y*         | Set the text cursor position to position    |
-|                        | x,y on the screen.                          |
-+------------------------+---------------------------------------------+
-| data                   | DATA statement.                             |
-| *const*,*const*,...    |                                             |
-|                        | Strings must be enclosed in quote marks.    |
-|                        |                                             |
-|                        | *A read statement will read the data found  |
-|                        | in the data statements. See:* read and      |
-|                        | restore.                                    |
-+------------------------+---------------------------------------------+
-| defchr ch,\....        | Define UDG ch (192-255) as a 6x7 font \--   |
-|                        | should be followed by 7 values from 0-63    |
-|                        | representing the bit pattern of the         |
-|                        | graphic, so if these numbers are converted  |
-|                        | to a 6 digit binary numbera \'1\'           |
-|                        | represents a pixel that is \'on\', and a    |
-|                        | \'0\' represents a pixel that is off.       |
-+------------------------+---------------------------------------------+
-| delete                 | Delete a line or range of lines             |
-+------------------------+---------------------------------------------+
-| dim                    | Dimension a one or two dimension string or  |
-| *array*(*n*,\[*m*\]),  | number array, up to 255 items.              |
-| \$\...                 |                                             |
-+------------------------+---------------------------------------------+
-| edit                   | Basic Screen Editor                         |
-+------------------------+---------------------------------------------+
-| fkey                   | Lists the defined function keys             |
-+------------------------+---------------------------------------------+
-| fkey *key*,*string*    | Define the behavior of F1..F10 \-- the      |
-|                        | characters in the string                    |
-+------------------------+---------------------------------------------+
-| ink *fgr*\[,*bgr*\]    | Set the ink foreground and optionally       |
-|                        | background for the console.                 |
-+------------------------+---------------------------------------------+
-| input *var*            | Will wait for input that ends when hitting  |
-|                        | return.                                     |
-|                        |                                             |
-|                        | The content entered will be stored in the   |
-|                        | variable *var*.                             |
-+------------------------+---------------------------------------------+
-| let *var*=*expr*       | Assignment statement. The let is optional.  |
-+------------------------+---------------------------------------------+
-
-**\
-**
-
-**BASIC Commands** *(continued...)*
-
-+------------------------+---------------------------------------------+
-| Command                | Description                                 |
-+========================+=============================================+
-| library                | The library command allows you to hide a    |
-| \[*                    | section of code from the program listing.   |
-| from*\]\[*,*\]\[*to*\] | It can be performed multiple times with     |
-|                        | different ranges to hide discontinuous      |
-| library                | sections of code.                           |
-|                        |                                             |
-|                        | Entering the command without any parameters |
-|                        | will unhide all sections of code and        |
-|                        | renumber the program starting at 1000.      |
-|                        |                                             |
-|                        | The hidden "library" code persists in files |
-|                        | saved, and will remain hidden even when the |
-|                        | program is loaded. 0                        |
-+------------------------+---------------------------------------------+
-| list                   | List an entire program                      |
-+------------------------+---------------------------------------------+
-| list \[*from*\]        | List a program starting at line number      |
-|                        | *from*                                      |
-+------------------------+---------------------------------------------+
-| list                   | List a program starting at line number      |
-| \[*                    | *from* to the line number *to*.             |
-| from*\]\[*,*\]\[*to*\] |                                             |
-+------------------------+---------------------------------------------+
-| list *procedure*()     | List the lines associated with a particular |
-|                        | procedure. *Must have the* () *following    |
-|                        | the name of the procedure.*                 |
-+------------------------+---------------------------------------------+
-| local *var*,*var*      | Define local variables within a procedure   |
-|                        | scope. Variables with the same name as      |
-|                        | local variables will be restored and then   |
-|                        | conclusion of the procedure execution, and  |
-|                        | local values will be lost if not assigned   |
-|                        | to global variables or passed out via the   |
-|                        | "def" parameter modifier.                   |
-+------------------------+---------------------------------------------+
-| mouse cursor *n*       | Select mouse cursor *n*                     |
-|                        |                                             |
-|                        |   ----------------------------------------- |
-|                        |   0    White Arrow     20    White arrow    |
-|                        |        (*default*)                          |
-|                        |   ---- --------------- ----- -------------- |
-|                        |   1    Fly             21    Black arrow    |
-|                        |                                             |
-|                        |   2    *Unknown*       22    Small arrow    |
-|                        |                                             |
-|                        |   3    *Target*        23    Very small     |
-|                        |                              arrow          |
-|                        |                                             |
-|                        |   4    *Unknown*       24    Very small     |
-|                        |                              pointer        |
-|                        |                                             |
-|                        |   5    *Unknown*       25    Arrow          |
-|                        |                                             |
-|                        |   6    *Unknown*       26    Finger         |
-|                        |                              pointing       |
-|                        |                                             |
-|                        |   7    *Unknown*       27    Watermelon     |
-|                        |                                             |
-|                        |   8    Dartboard       28    Lime           |
-|                        |                                             |
-|                        |   9    Magnifying      29    Lemon          |
-|                        |        glass                                |
-|                        |                                             |
-|                        |   10   Hourglass       30    Dinosaur       |
-|                        |                                             |
-|                        |   11   Paint bucket    31    Crown          |
-|                        |        (fill)                               |
-|                        |                                             |
-|                        |   12   Right-angle     32    Dice           |
-|                        |        tool                                 |
-|                        |                                             |
-|                        |   13   Right-angle     33    Globe          |
-|                        |        tool                                 |
-|                        |                                             |
-|                        |   14   *Unknown*       34    Christmas tree |
-|                        |                                             |
-|                        |   15   Pencil          35    Olympic rings  |
-|                        |                                             |
-|                        |   16   Paintbrush      36    Mountain peek  |
-|                        |                                             |
-|                        |   17   Unknown         37    Flower         |
-|                        |                                             |
-|                        |   18   Yin-yang        38    Floppy disk    |
-|                        |                                             |
-|                        |   19   Paint brush                          |
-|                        |   ----------------------------------------- |
-|                        |                                             |
-|                        | *The above list was accurate as of firmware |
-|                        | version 0.99.1, and could change.*          |
-+------------------------+---------------------------------------------+
-
-**\
-**
-
-**BASIC Commands** *(continued...)*
-
-+------------------------+---------------------------------------------+
-| Command                | Description                                 |
-+========================+=============================================+
-| mouse show             | Show the mouse on the screen                |
-+------------------------+---------------------------------------------+
-| mouse TO *x*,*y*       | Position mouse cursor                       |
-+------------------------+---------------------------------------------+
-| new                    | Erase any program in memory.                |
-+------------------------+---------------------------------------------+
-| old                    | Reverses the "new" statement. *Please note, |
-|                        | that this could fail, depending on what     |
-|                        | actions or changes to memory has taken      |
-|                        | place since "*new*" was executed.*          |
-+------------------------+---------------------------------------------+
-| palette c,r,g,b        | Set color c to r,g,b values. Values are all |
-|                        | 0 -- 255, however it is actually 3:2:3      |
-|                        | color, so the result will be                |
-|                        | approximations.                             |
-|                        |                                             |
-|                        | An example would be palette 7,255,128,0     |
-|                        | which sets color 7 (normally white) to R =  |
-|                        | 255, G = 128, B = 0 which is orange.        |
-+------------------------+---------------------------------------------+
-| palette clear          | Reset palette to default                    |
-+------------------------+---------------------------------------------+
-| proc                   | Creates a procedure, that can optionally    |
-| *name*(\[p1,p2,...\])  | have parameters.                            |
-|                        |                                             |
-| ...                    | If parameters are used, when the procedure  |
-|                        | is called, the parameters must match        |
-| endproc                | (number and types) exactly.                 |
-|                        |                                             |
-|                        | parameters can be defined as reference      |
-|                        | parameters and will return values.          |
-|                        |                                             |
-|                        | proc *name*( \[ref\] *p1*, \[ref\]          |
-|                        | *p2*,\[ref\]\...)                           |
-|                        |                                             |
-|                        | Any change to the variables will be passed  |
-|                        | back at the end of the procedure in the     |
-|                        | same variables that were in the parameter   |
-|                        | section.                                    |
-|                        |                                             |
-|                        | parameters cannot be arrays.                |
-|                        |                                             |
-|                        | **NOTE:** Procedures should be defined at   |
-|                        | the end of a basic program and an "end"     |
-|                        | statement need to precede the declaration   |
-|                        | section. If the BASIC program execution     |
-|                        | hits a proc declaration, a syntax error     |
-|                        | will be presented.                          |
-+------------------------+---------------------------------------------+
-| call *name*            | Call named procedure with optional          |
-| (\[*p1,p2,...*\])      | parameters.                                 |
-|                        |                                             |
-|                        | If the procedure is defined with reference  |
-|                        | variables, then values are returned at the  |
-|                        | end of the procedure call.                  |
-+------------------------+---------------------------------------------+
-
-**\
-**
-
-+------------------------+---------------------------------------------+
-| Command                | Description                                 |
-+========================+=============================================+
-| renumber \[*start*\]   | Renumber the program in memory starting at  |
-|                        | 1000, or from the optional parameter        |
-|                        | *start*.                                    |
-|                        |                                             |
-|                        | -   The renumber command will not change    |
-|                        |     any line numbers used with goto or      |
-|                        |     gosub. *These are commands are not      |
-|                        |     recommended for use and should be used  |
-|                        |     at your own risk.*                      |
-+------------------------+---------------------------------------------+
-| read *var*, ...        | Read variables from data statements.        |
-|                        | Variable type must match the data (string   |
-|                        | or integer) in the data statements.         |
-+------------------------+---------------------------------------------+
-| restore                | Restore data pointer to the beginning of    |
-|                        | the data statements. Performing a read will |
-|                        | read from the very first data constant.     |
-+------------------------+---------------------------------------------+
-| restore *line*         | Restore data pointer to line number *line.* |
-|                        |                                             |
-|                        | -   The restore command uses line numbers,  |
-|                        |     which are not guaranteed to remain the  |
-|                        |     same in a program. *These are commands  |
-|                        |     are not recommended for use and should  |
-|                        |     be used at your own risk.*              |
-+------------------------+---------------------------------------------+
-| tilemap *addr,x,y*     | Define a tilemap.                           |
-|                        |                                             |
-|                        | The tilemap data format is in the API. The  |
-|                        | tilemap is stored in memory at addr, and    |
-|                        | the offset into the                         |
-+------------------------+---------------------------------------------+
-
-**\
-**
-
-### Interfacing with hardware
-
-  -----------------------------------------------------------------------
-  Command                  Description
-  ------------------------ ----------------------------------------------
-  clear \[*address*\]      Clear out stack, strings, reset all variables.
-                           If an address is provided, then memory above
-                           that will not be touched by BASIC. Note
-                           because this resets the stack, it cannot be
-                           done in a loop, subroutine or procedure \--
-                           they will be forgotten. Also clears the
-                           sprites and the sprite layer.
-
-  doke *addr*,*data*       Write word to address
-
-  mon                      Enter the machine code monitor
-
-  pin *pin*,*value*        Set UEXT {pin} to given value.
-
-  pin *pin* INPUT          output
-
-  poke *addr*,*data*       Write byte to address
-
-  sys *address*            Call 65C02 machine code at given address.
-                           Passes contents of variables A,X,Y in those
-                           registers.
-
-  uconfig *baud*\[,*prt*\] Set the baud rate and protocol for the UART.
-                           Currently only 8N1 is supported.
-  -----------------------------------------------------------------------
-
-**\
-**
-
-### Graphics Commands
-
-+------------------------+---------------------------------------------+
-| Command                | Description                                 |
-+========================+=============================================+
-| gload *filename*       | Load filename into graphics memory.         |
-|                        |                                             |
-|                        | **Example:**                                |
-|                        |                                             |
-|                        | gload "mygraphics.gfx"                      |
-+------------------------+---------------------------------------------+
-| from x,y               | Sets the origin position, can be repeated   |
-|                        | and optional.                               |
-+------------------------+---------------------------------------------+
-| to x,y                 | Draw the element at x,y or between the      |
-|                        | current position and x,y depending on the   |
-|                        | command. So you could have text \"Hello\"   |
-|                        | to 10,10 or rect 0,0 to 100,50              |
-+------------------------+---------------------------------------------+
-| by x,y                 | Same as to but x and y are an offset from   |
-|                        | the current position                        |
-+------------------------+---------------------------------------------+
-| x,y                    | Set the current position without doing the  |
-|                        | action                                      |
-+------------------------+---------------------------------------------+
-| ink *c*                | Modifier to a graphic command to change     |
-|                        | what color c the command will use.          |
-+------------------------+---------------------------------------------+
-| ink *a,x*              | Modify the color that is used in the        |
-|                        | graphics commands by using the screen color |
-|                        | and performing a binary AND with parameter  |
-|                        | a, and performing a binary OR with          |
-|                        | parameter x.                                |
-+------------------------+---------------------------------------------+
-| solid                  | Fill in rectangles and ellipses. For images |
-|                        | and text, forces black background.          |
-+------------------------+---------------------------------------------+
-| text {str} to x,y      | Draw/place text at t c0dc0he specified x,y  |
-|                        | coordinates.\                               |
-|                        | text "Hello World!" to 20,20                |
-+------------------------+---------------------------------------------+
-| rect                   | rect {*solid* \| *frame*} x1,y1 to x2,y2    |
-|                        |                                             |
-|                        | Will draw a rectangle with the              |
-|                        | upper-left-corner (x1,y1) to the            |
-|                        | bottom-right-corner (x2,y2).                |
-|                        |                                             |
-|                        | **Note:** Once used, rect and ellipse       |
-|                        | commands will continue using the solid or   |
-|                        | frame state until changed.                  |
-|                        |                                             |
-|                        | **See** frame, solid                        |
-+------------------------+---------------------------------------------+
-
-**\
-**
-
-+------------------------+---------------------------------------------+
-| Command                | Description                                 |
-+========================+=============================================+
-| ellipse                | ellipse {*solid* \| *frame*} x1,y1 to x2,y2 |
-+------------------------+---------------------------------------------+
-| frame                  | A modifier for rectangles and ellipses,     |
-|                        | where it will only draw the outline, not    |
-|                        | filling it in.                              |
-|                        |                                             |
-|                        | rect frame x1,y1 to x2,y2 will draw an      |
-|                        | empty rectangle.                            |
-+------------------------+---------------------------------------------+
-| solid                  | A modifier for rectangles and ellipses,     |
-|                        | where it will only draw a filled in         |
-|                        | rectangle or ellipse.                       |
-|                        |                                             |
-|                        | rect solid *x1,y1* to *x2,y2* will draw a   |
-|                        | filled in rectangle.                        |
-+------------------------+---------------------------------------------+
-| dim n                  | Set the scaling to *n* (for text, image,    |
-|                        | and tilemap only), and must be an integer.  |
-|                        |                                             |
-|                        | text \"Hello\" dim 2 to 10,10 to            |
-|                        | 10,100 will draw the word "Hello" at double |
-|                        | its size!                                   |
-|                        |                                             |
-|                        | Tiles can only be scaled at 1 or 2 (when    |
-|                        | scaling at 2, tiles are drawn at a size of  |
-|                        | 32x32, versus the scale 1 of 16 x16).       |
-+------------------------+---------------------------------------------+
-| move                   |                                             |
-+------------------------+---------------------------------------------+
-| plot                   |                                             |
-+------------------------+---------------------------------------------+
-| line                   |                                             |
-+------------------------+---------------------------------------------+
-| flip                   | flip is an optional modifier for the sprite |
-|                        | command.\                                   |
-|                        | 0 = no flip; 1= horizontal flip; 2 =        |
-|                        | vertical flip; or 3 = both vertical and     |
-|                        | horizontal.                                 |
-+------------------------+---------------------------------------------+
-| anchor                 |                                             |
-+------------------------+---------------------------------------------+
-| image                  |                                             |
-+------------------------+---------------------------------------------+
-| sprite                 |                                             |
-+------------------------+---------------------------------------------+
-
-### Pixel Colors
-
-These colors are approximations and will vary depending on the type and
-image adjustments of the display.
-
-  ------------------------------------------------------------------------------------------
-   Pixel   Hex        Color                       Pixel   Hex      Color               
-  ------- ------ --------------- --------- ----- ------- ------ ------------ --------- -----
-     0     \$80      Black\       #000000           8     \$88     Black      #000000  
-                  *Transparent*                                                        
-
-     1     \$81        Red        #ff0044           9     \$89   Dark Grey    #555544  
-
-     2     \$82       Green       #00ee33          10     \$8A   Dark Green   #008855  
-
-     3     \$83      Yellow       #ffee22          11     \$8B     Orange     #ffaa00  
-
-     4     \$84       Blue        #112255          12     \$8C  Dark Orange   #aa5533  
-
-     5     \$85      Magenta      #772255          13     \$8D     Brown      #887799  
-
-     6     \$86       Cyan        #22aaff          14     \$8E      Pink      #ffccaa  
-
-     7     \$87       White       #ffffee          15     \$8F   Light Grey   #cccccc  
-  ------------------------------------------------------------------------------------------
-
-### Sprite Commands
-
-Sprites are two-dimensional bitmaps that is integrated into a larger
-scene. Sprites are loaded from graphics file that holds sprites, tiles
-and other objects. Sprites can be drawn and moved without disturbing the
-current screen background. For example, a flagpole can be an image drawn
-on the screen, but a flag moving up or down the flagpole is usually a
-sprite so it can be easily displayed and moved without disturbing the
-drawn flagpole.
-
-The Neo6502 graphics system has one sprite layer (z-plane) in the
-conventional sense, however technically, there is no \"sprite layer\".
-The system uses palette manipulation to create, what is in practice, a
-pair of 4-bit bit-planes. The sprite graphics are in the upper nibble,
-the background is in the lower nibble, and the background is drawn only
-if the sprite graphic layer is zero.
-
--   There can be a total of 128 (0--127) sprites defined in memory, 127
-    user sprites, and a single sprite 128 which is used to show the
-    "turtle" in turtle graphics mode, which can be overwritten if turtle
-    graphics is not going to be used.
-
-A typical sprite command is:
-
-**SPRITE *n* \[image *i*\] \[TO *x*,*y*\] \[FLIP *f*\] \[BY *x*,*y*\]
-\[ANCHOR *a*\] \[CLEAR\]**
-
-------------------------------------------------------------------------
-
-As with graphics commands not all options are required, as they are
-options, which applies modifiers to the command. You can simply use
-SPRITE 1 IMAGE 3.
-
-*Modifiers include:*
-
-  -----------------------------------------------------------------------
-  Modifier         Description of what action the modifier performs
-  ---------------- ------------------------------------------------------
-  IMAGE *i*        which sets the image for sprite *n* to image *i*. *n*
-                   is the sprite number
-
-  TO *x*,*y*       which sets the position of the sprite to coordinates
-                   *x*,*y*
-
-  FLIP *f*         which sets the orientation of sprite *f. Values: 0 =
-                   no flip; 1= horizontal flip; 2 = vertical flip; or 3 =
-                   both vertical and horizontal.*
-
-  ANCHOR *a*       which sets the anchor point. *See*
-
-  BY *x*,*y*       which sets the position by offset
-
-  CLEAR            This will reset all sprites and removed them from the
-                   display.
-  -----------------------------------------------------------------------
-
-Example:
-
-SPRITE 1 IMAGE 2 TO 200,200 SPRITE 2 IMAGE 3 BY 10,10
-
-------------------------------------------------------------------------
-
-The above command will set sprite 1 to image 2 and then display it at
-coordinate 200,200 and set sprite 2 to image 3 and move sprite 2 to an
-offset position of 10,10 from its current position.
-
-**Implementation notes**
-
--   Up to 128 sprites are supported. Sprites are drawn by the RP2040
-    processor, so keep in mind displaying a large number of sprites on
-    the screen will reduce overall system performance.
-
-<!-- -->
-
--   Sprites are currently done with XOR drawing, which causes some
-    flickering effects when they overlap. This should not be relied on
-    (it may be replaced by a clear/invalidate system at some point), but
-    the actual implementation should not change.
-
-**Sprites (*continued)***
-
-## Sprite Support Functions
-
-  -----------------------------------------------------------------------
-  Function         Description
-  ---------------- ------------------------------------------------------
-  spritex(*n*)     Will return the *x* coordinate of sprite *n*
-
-  spritey(*n*)     Will return the *y* coordinate of sprite *n*
-
-  hit(*s1, s2, d*) Detect a sprites collision. It returns true if the
-                   pixel distance between the center of sprite s1 and the
-                   center of sprite s2 is less than or equal to the
-                   distance *d*.
-  -----------------------------------------------------------------------
-
-**Example:**
-
-If you wanted to move a sprite until it collided with another sprite,
-assuming both are 32x32, the collision distance would be 32 (the
-distance from the center to the edge of both sprites added together).
-
-> x = 0
->
-> repeat
->
-> x = x + 1: sprite 1 to x,40
->
-> until hit(1,2,32)
-
-**Game Design**
-
-Using the hit function with various distance values should be tested
-with the various applications to improve the "feel" of game play.
-Experimenting with different distance values based on the shape and the
-size of the sprites can greatly improve the experience, where near exact
-collision detection would make the experience better.
-
-**Sprite Drawing Anchor Points**
-
-  -----------------------------------------------------------------------
-            7                       8                        9
-  ---------------------- ------------------------ -----------------------
-            4                      0/5                       6
-
-            1                       2                        3
-  -----------------------------------------------------------------------
-
-The table below shows the valid anchor alignments for a sprite. The
-anchor position is the origin of the relative coordinate 0,0 of the
-sprite. Based on the anchor point value provided, coordinate 0,0 will
-coincide with one of the positions shown in the table below. *The
-default anchor alignment is zero (middle-center).*
-
-# Sounds and Music
-
-Queued sounds are played sequentially, each after the previous has
-completed, such that sounds within a channel queue will not conflict,
-interrupt, or overlap. Frequency is in units of Hertz. Duration is in
-units of 100ths of a second. Slide is a gradual linear change in
-frequency, in units of Hz per 100th of a second. Sound target type 0 is
-the beeper. Currently, the beeper is the only available sound target.
-
-+-------------------+--------------------------------------------------+
-| Function          | Description                                      |
-+===================+==================================================+
-| sound clear       | Resets the entire sound system, silences all     |
-|                   | channels, empties all queues.                    |
-+-------------------+--------------------------------------------------+
-| sound *c* clear   | Resets a single channel *c*; silences it and     |
-|                   | empties its queue.                               |
-+-------------------+--------------------------------------------------+
-| sound *c, f, t*   | Queues a note on the given channel *c* of the    |
-| \[, *s*\]         | given frequency *f* (in Hz) and time *t* (*in    |
-|                   | centiseconds*). These will be played in the      |
-|                   | background as other notes finish so you can      |
-|                   | \'queue up\' an entire phrase and let it play by |
-|                   | itself.                                          |
-|                   |                                                  |
-|                   | The slide *s* value adds that much to the        |
-|                   | frequency *f* every centisecond allowing some    |
-|                   | additional effects (note, done in 50Hz ticks)    |
-|                   |                                                  |
-|                   | A mixture of the two syntaxes SOUND 0 CLEAR      |
-|                   | 440,200 is now supported.                        |
-+-------------------+--------------------------------------------------+
-| noise             | White noise feature. To use the white noise      |
-|                   | feature use the keyword \"noise\" instead of     |
-|                   | sound.                                           |
-+-------------------+--------------------------------------------------+
-| sfx *c, e*        |                                                  |
-+-------------------+--------------------------------------------------+
-
-**Sound effects**
-
-These will be synthesized to the best ability of the available hardware,
-so the actual sound may vary slightly. 
-
-  -----------------------------------------------------------------------
-      ID         Sound        ID         Sound        ID         Sound
-  ----------- ----------- ----------- ----------- ----------- -----------
-       0       positive        8        powerup       16      ringtone 2
-
-       1       negative        9        victory       17      ringtone 3
-
-       2         error        10        defeat        18        danger
-
-       3        confirm       11        fanfare       19        expl100
-
-       4        reject        12        alarm 1       20        expl50
-
-       5         sweep        13        alarm 2       21        expl20
-
-       6         coin         14        alarm 3       22         las30
-
-       7         las70        15      ringtone 1      23         las10
-  -----------------------------------------------------------------------
-
-### MOS Commands 
+### MOS Commands
 
 Using the MOS commands to access OS disk/file functionality.
 
 MOS commands can be used in four different ways:
 
--   On the NeoBASIC command line, prefixing the command with an
-    asterisk.\
-    **Example**: \*del myfile.txt
+- On the NeoBASIC command line, prefixing the command with an
+  asterisk.\
+  **Example**: \*del myfile.txt
 
--   On the NeoBASIC command line, use the mos BASIC command. Surround
-    the MOS command in quotes.\
-    **Example**: mos \"del myfile.txt\"
+- On the NeoBASIC command line, use the mos BASIC command. Surround
+  the MOS command in quotes.\
+  **Example**: mos \"del myfile.txt\"
 
--   Within a NeoBASIC program, you can use the mos BASIC function.
-    Surround the MOS command in quotes.\
-    **Example**: if mos(\"del myfile.txt\") \> 0 then ...
+- Within a NeoBASIC program, you can use the mos BASIC function.
+  Surround the MOS command in quotes.\
+  **Example**: if mos(\"del myfile.txt\") \> 0 then ...
 
 **Available MOS Commands**
 
@@ -2378,13 +62,16 @@ MOS commands can be used in four different ways:
 **Standard Unix POSIX paths are used with the MOS commands.**
 
   -----------------------------------------------------------------------
+
   ./    Current directory
+
   ----- -----------------------------------------------------------------
+
   ../   Go up in the hierarchy, relative to the current directory
         (*sometime referred as the going back a directory*).
 
-  /     The root or top-level directory.
-  -----------------------------------------------------------------------
+/     The root or top-level directory.
+-----------------------------------------------------------------------
 
 **MOS Commands (*continued)***
 
@@ -2394,8 +81,11 @@ Most of the functions will return an error/status code to indicate
 whether the operation succeeded or not.
 
   ---------------------------------------------------------------------------
+
   Name                          Value  Meaning
+
   ---------------------------- ------- --------------------------------------
+
   FIOERROR_OK                   0x00   Operation succeeded (not an error)
 
   FIOERROR_UNKNOWN              0x01   Something went wrong, but we don\'t
@@ -2436,14 +126,17 @@ whether the operation succeeded or not.
 
   FIOERROR_NOT_ENABLED          0x34   The volume has no work area
 
-  FIOERROR_NO_FILESYSTEM        0x35   The filesystem is invalid
-  ---------------------------------------------------------------------------
+FIOERROR_NO_FILESYSTEM        0x35   The filesystem is invalid
+---------------------------------------------------------------------------
 
 ### File Attributes
 
   -------------------------------------------------------------------------
+
   Name                Value   Meaning
+
   ------------------- ------- ---------------------------------------------
+
   FIOATTR_DIR         0x01    This is a directory (may not be modified)
 
   FIOATTR_SYSTEM      0x02    This is a system file and will be hidden from
@@ -2455,14 +148,14 @@ whether the operation succeeded or not.
   FIOATTR_READONLY    0x08    File is read only and may not be overwritten
                               or modified
 
-  FIOATTR_HIDDEN      0x10    This will be hidden from directory listings
-  -------------------------------------------------------------------------
+FIOATTR_HIDDEN      0x10    This will be hidden from directory listings
+-------------------------------------------------------------------------
 
 ### 
 
 ### 
 
-###  
+### 
 
 ## The Inline Assembler
 
@@ -2481,8 +174,11 @@ You can also pass A X Y as variables. So you could delete line 150 and
 run it with X = 12: sys start which would print 12 asterisks.
 
   -----------------------------------------------------------------------------
+
   **Line**   **Code**         **Notes**
+
   ---------- ---------------- -------------------------------------------------
+
   100        mem = alloc(32)  Allocate 32 bytes of memory to store the program
                               code.
 
@@ -2519,6 +215,7 @@ run it with X = 12: sys start which would print 12 asterisks.
 
   230        sys mem          BASIC instruction to \'call 6502 code\'. Could do
                               sys start here.
+
   -----------------------------------------------------------------------------
 
 ## \[\] Operator
@@ -2619,9 +316,9 @@ The above address map and the tables describing the functions found in
 this section can be found in numerous sections of the firmware release
 download:
 
--   examples/assembly/neo6502.inc
+- examples/assembly/neo6502.inc
 
--   examples/C/neo6502.h
+- examples/C/neo6502.h
 
 **\
 **
@@ -2631,10 +328,13 @@ download:
 ### Procedure to make Messaging API call
 
   -----------------------------------------------------------------------
+
   proc sendmsg(g,f)                   Define a procedure to "send a
                                       message" using parameters f
                                       (function), and p (parameters)
+
   ----------------------------------- -----------------------------------
+
   while peek(\$FF00):wend             Wait until the messaging API is
                                       ready to accept a message (all
                                       previous commands in queue have
@@ -2650,8 +350,8 @@ download:
   while peek(\$FF00):wend             Wait until for the function to
                                       complete.
 
-  endproc                             End the procedure.
-  -----------------------------------------------------------------------
+endproc                             End the procedure.
+-----------------------------------------------------------------------
 
 The above code allows you to make a messaging API call. Example:
 sendmsg(2,12) will clear the screen.
@@ -2669,7 +369,7 @@ doke \$FF04
 \
 **
 
-## API Commands/Functions 
+## API Commands/Functions
 
 *Grouped by functionality in the tables.*
 
@@ -3172,8 +872,11 @@ Binary functions that use int and float combined (one is int and one is
 float) normally return a float.
 
   --------------------------------------------------------------------------------
+
   G,F    Function              Description and Example
+
   ------ --------------------- ---------------------------------------------------
+
   4,0    Addition              Register1 := Register 1 + Register2
 
   4,1    Subtraction           Register1 := Register 1 - Register2
@@ -3241,6 +944,7 @@ float) normally return a float.
 
   4,35   Set Degree/Radian     Sets the use of degrees (the default) when non
          Mode                  zero, radians when zero.
+
   --------------------------------------------------------------------------------
 
 ## 
@@ -3248,8 +952,11 @@ float) normally return a float.
 ## Graphics
 
   ------------------------------------------------------------------------
+
   G,F    Function      Description and Example
+
   ------ ------------- ---------------------------------------------------
+
   5,1    Set Defaults. Configure the global graphics system settings. Not
                        all parameters are relevant for all graphics
                        commands; but all parameters will be set by this
@@ -3343,13 +1050,17 @@ float) normally return a float.
   5,67   Set Flip Bits Set Flip Bits. Sets the flip bits for drawing
                        images. Bit 0 set causes a horizontal flip, bit 1
                        set causes a vertical flip.
+
   ------------------------------------------------------------------------
 
 ## Sprites
 
   -----------------------------------------------------------------------
+
   G,F   Function      Description and Example
+
   ----- ------------- ---------------------------------------------------
+
   6,1   Sprite Reset  Reset the sprite system.
 
   6,2   Sprite Set    Set or update the sprite specified in Parameter:0.
@@ -3369,13 +1080,17 @@ float) normally return a float.
   6,5   Sprite        Deposit into parameters:1..4, the screen
         Position      coordinates of the sprite with the index specified
                       in Parameter:0.
+
   -----------------------------------------------------------------------
 
 ## Controller
 
   -----------------------------------------------------------------------
+
   G,F   Function      Description and Example
+
   ----- ------------- ---------------------------------------------------
+
   7,1   Read Default  This reads the status of the base controller into
         Controller    Parameter:0, and is a compatibility API call. The
                       base controller is the keyboard keys (these are
@@ -3393,13 +1108,17 @@ float) normally return a float.
         Controller    Controller 0 is the keyboard controller,
                       Controllers 1 upwards are those physical USB
                       devices.
+
   -----------------------------------------------------------------------
 
 ## Sound
 
   -----------------------------------------------------------------------
+
   G,F   Function      Description and Example
+
   ----- ------------- ---------------------------------------------------
+
   8,1   Reset Sound   Reset the sound system. This empties all channel
                       queues and silences all channels immediately.
 
@@ -3434,6 +1153,7 @@ float) normally return a float.
 
   8,8   Get Channel   This returns the number of channels in Parameter #0
         Count         
+
   -----------------------------------------------------------------------
 
 ## Turtle Graphics
@@ -3478,8 +1198,11 @@ float) normally return a float.
 ## UEXT port I/O
 
   -------------------------------------------------------------------------
+
   G,F     Function      Description and Example
+
   ------- ------------- ---------------------------------------------------
+
   10,1    UExt          Initialise the UExt I/O system. This resets the IO
           Initialize    system to its default state, where all UEXT pins
                         are I/O pins, inputs and enabled.
@@ -3531,16 +1254,20 @@ float) normally return a float.
 
   10,12   Write SPI     Try to write a block of memory to SPI Device from
           Block         memory at parameters:1,2, length parameters:3,4.
+
   -------------------------------------------------------------------------
 
 **\
 **
 
   -------------------------------------------------------------------------
+
   10,13   Read UART     Try to read a block of memory from UART into memory
           Block         at parameters:1,2, length parameters:3,4. This can
                         fail with a timeout.
+
   ------- ------------- ---------------------------------------------------
+
   10,14   Write UART    Try to write a block of memory to UART from memory
           Block         at parameters:1,2, length parameters:3,4.
 
@@ -3557,13 +1284,17 @@ float) normally return a float.
 
   10,18   Check if Byte See if a byte is available in the UART input
           Available     buffer. If available Parameter:0 is non zero.
+
   -------------------------------------------------------------------------
 
 ## Mouse
 
   ------------------------------------------------------------------------
+
   G,F    Function      Description and Example
+
   ------ ------------- ---------------------------------------------------
+
   11,1   Move display  Positions the display cursor at
          cursor        parameters:0,1,parameters:2,3
 
@@ -3584,6 +1315,7 @@ float) normally return a float.
 
   11,5   Select mouse  Select a mouse cursor in Parameter:0 ; returns
          Cursor        error status if the cursor is not available.
+
   ------------------------------------------------------------------------
 
 ## Blitter
@@ -3757,14 +1489,18 @@ float) normally return a float.
 ## Editor
 
   ------------------------------------------------------------------------
+
   G,F    Function      Description and Example
+
   ------ ------------- ---------------------------------------------------
+
   13,1   Initialize    Initializes the editor
          Editor        
 
   13,2   Reenter the   Re-enters the system editor. Returns the function
          Editor        required for call out, the editors sort of \'call
                        backs\' - see editor specification.
+
   ------------------------------------------------------------------------
 
 ; Convenience macros for Neo6502 applications programming
@@ -4638,9 +2374,12 @@ This appendix offers the detailed specifications for each of the Neo6502
 computers and the differences between them.
 
   ------------------------------------------------------------------------
+
   Feature                                        Neo6502\     Neo6502pc
                                                  Computer      Computer
+
   -------------------------------------------- ------------ --------------
+
   Physical W65C02 processor running at 6.25Mhz     Yes           Yes
 
   RP2040 SoC (System on a Chip) w/ 2MB Flash       Yes           Yes
@@ -4675,10 +2414,10 @@ computers and the differences between them.
   Build in LiPo battery w/ charger circuit and      No           Yes
   battery monitoring                                        
 
-  Power on off switch                               No           Yes
-  ------------------------------------------------------------------------
+Power on off switch                               No           Yes
+------------------------------------------------------------------------
 
-## ![A red circuit board with black and red components Description automatically generated](media/image20.png){width="2.4180555555555556in" height="2.2631944444444443in"}Neo6502 
+## ![A red circuit board with black and red components Description automatically generated](media/image20.png){width="2.4180555555555556in" height="2.2631944444444443in"}Neo6502
 
 The Olimex Neo6502 was the first model released. The main components are
 a W65C02 and a Raspberry Pi RP2040. The W65C02 runs the machine code (at
@@ -4693,7 +2432,7 @@ a couple of wires connecting pins of the UEXT to the 6502 bus to work
 properly. Both models come as the board only, with cases available to
 protect the board.
 
-###  Hardware Pictures
+### Hardware Pictures
 
 ![A red circuit board with white text Description automatically
 generated](media/image22.png){width="6.225517279090114in"
@@ -4717,75 +2456,75 @@ More Information:
 
 ## Features
 
--   A real W65C02 processor clocked at 6.25Mhz
+- A real W65C02 processor clocked at 6.25Mhz
 
--   Graphics co-processor RP2040 providing 320 x 240 resolution with
-    256-color display on HDMI/DVI.
+- Graphics co-processor RP2040 providing 320 x 240 resolution with
+  256-color display on HDMI/DVI.
 
--   32k Graphics RAM for tiles and sprites
+- 32k Graphics RAM for tiles and sprites
 
--   128 sprites up to 32x32 pixels.
+- 128 sprites up to 32x32 pixels.
 
--   Multiple tile maps (16x16 tiles, can be double sized)
+- Multiple tile maps (16x16 tiles, can be double sized)
 
--   High speed drawing features
+- High speed drawing features
 
--   Turtle Graphics
+- Turtle Graphics
 
--   Blitter for high-speed graphics
+- Blitter for high-speed graphics
 
--   Four UEXT interface ports to access a wide range of hardware add
-    ons.
+- Four UEXT interface ports to access a wide range of hardware add
+  ons.
 
--   1 channel \"beeper\" sound with SFX library (to be replaced by
-    AY-3-8910 Emulation)
+- 1 channel \"beeper\" sound with SFX library (to be replaced by
+  AY-3-8910 Emulation)
 
--   USB flash drive support for storage w/ optional SD Card support.
+- USB flash drive support for storage w/ optional SD Card support.
 
--   Supports standard USB keyboard.
+- Supports standard USB keyboard.
 
--   Fast structured BASIC with hardware support and inline assembler.
+- Fast structured BASIC with hardware support and inline assembler.
 
--   BASIC can be edited on screen or using a text editor.
+- BASIC can be edited on screen or using a text editor.
 
--   High Speed Integer/Floating point arithmetic
+- High Speed Integer/Floating point arithmetic
 
--   Huge open-source community that has written documentation, provided
-    samples, and code including games.
+- Huge open-source community that has written documentation, provided
+  samples, and code including games.
 
--   Cross development support
+- Cross development support
 
--   Accurate cross platform emulator for Windows/Mac/Linux, only
-    requires SDL2
+- Accurate cross platform emulator for Windows/Mac/Linux, only
+  requires SDL2
 
--   Serial link to PC for Cross-Development
+- Serial link to PC for Cross-Development
 
--   Program in PASCAL using Mad Pascal compiler
+- Program in PASCAL using Mad Pascal compiler
 
--   Program in \'C\' using CC65 and LLVM
+- Program in \'C\' using CC65 and LLVM
 
--   USB Mouse and Gamepad support
+- USB Mouse and Gamepad support
 
--   BASIC support for Serial, I2C and SPI hardware via UEXT Connector -
-    64KB linear RAM space for code
+- BASIC support for Serial, I2C and SPI hardware via UEXT Connector -
+  64KB linear RAM space for code
 
--   LCD display
+- LCD display
 
--   Internal battery backup power supply which allows it to operate up
-    to 3 hours without external power supply
+- Internal battery backup power supply which allows it to operate up
+  to 3 hours without external power supply
 
--   Three external and one internal USB hosts (internal is connected to
-    LCD touch panel)
+- Three external and one internal USB hosts (internal is connected to
+  LCD touch panel)
 
--   Audio output
+- Audio output
 
--   12 GPIO extension connector
+- 12 GPIO extension connector
 
--   USB-C for power and internal battery charging.
+- USB-C for power and internal battery charging.
 
--   Second USB-C for RP2040 firmware programming
+- Second USB-C for RP2040 firmware programming
 
--   Dimensions 220 x 130 x 35 mm
+- Dimensions 220 x 130 x 35 mm
 
 ### Neo6502pc -- Hardware Pictures
 
@@ -4800,17 +2539,19 @@ height="2.8098436132983378in"}
 **Neo6502pc -- Hardware Pictures** *(continued)*
 
   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   ![A red rectangular device with a screen Description          ![A black rectangular device with a screen Description        ![A yellow rectangular device with a screen Description
   automatically                                                 automatically                                                 automatically
   generated](media/image26.jpeg){width="1.7247714348206473in"   generated](media/image27.jpeg){width="1.7335115923009623in"   generated](media/image28.jpeg){width="1.9541283902012248in"
   height="0.96248687664042in"}                                  height="0.9171467629046369in"}                                height="1.0817147856517935in"}
+
   ------------------------------------------------------------- ------------------------------------------------------------- -------------------------------------------------------------
-                                                                                                                              
 
   ![A green rectangular device with a screen Description        ![A blue rectangular device with a screen Description         
   automatically                                                 automatically                                                 
   generated](media/image29.jpeg){width="1.7972222222222223in"   generated](media/image30.jpeg){width="1.9082567804024497in"   
   height="0.9722222222222222in"}                                height="1.0171062992125983in"}                                
+
   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ![](media/image31.png){width="6.433333333333334in"
@@ -4830,10 +2571,13 @@ I2C and can monitor battery charge, the presence of the external power
 supply and access to the 12 GPIOs via the EXT1 connector:
 
   -----------------------------------------------------------------------
+
             ![A diagram of an electrical wiring Description automatically
                             generated](media/image32.png){width="6.125in"
                                            height="2.4027777777777777in"}
+
   -----------------------------------------------------------------------
+
             Neo6502pc and Neo6502 -- 12-pin GPIO EXT1 connector schematic
 
   -----------------------------------------------------------------------
@@ -4845,45 +2589,48 @@ supply and access to the 12 GPIOs via the EXT1 connector:
 All 6502 signals are available on BUS1 connector for attaching external
 hardware on it. Signals available:
 
--   
+- 
 
--   +5V
+- +5V
 
--   3.3V
+- 3.3V
 
--   GND
+- GND
 
--   D0-D7
+- D0-D7
 
--   A0-A15
+- A0-A15
 
--   PHI2
+- PHI2
 
--   R/W
+- R/W
 
--   RESB
+- RESB
 
--   SOB
+- SOB
 
--   MLB
+- MLB
 
--   VPB
+- VPB
 
--   SYNC
+- SYNC
 
--   NMIB
+- NMIB
 
--   IRQB
+- IRQB
 
 Two signals of RP2040 SWDIO and SWCLK are also present for RP2040
 debugging, these should [not be connected]{.underline} on the external
 6502 peripheral boards.
 
   -----------------------------------------------------------------------
+
                            ![A diagram of a bus Description automatically
                 generated](media/image33.jpg){width="4.928632983377078in"
                                             height="4.903290682414698in"}
+
   -----------------------------------------------------------------------
+
                    Neo6502pc and Neo6502 -- W6502 bus connector schematic
 
   -----------------------------------------------------------------------
@@ -4893,23 +2640,25 @@ debugging, these should [not be connected]{.underline} on the external
 UEXT (Universal EXTension) connectors have the following signals
 available. All signals are with 3.3V levels.
 
--   +3.3V
+- +3.3V
 
--   GND
+- GND
 
--   I2C
+- I2C
 
--   SPI
+- SPI
 
--   UART
+- UART
 
 UEXT connector can be found in many different shapes, however the
 connector used on the Neo6502pv uses a UEXT connector that is 0.1"
 2.54mm step boxed plastic connector.
 
   -----------------------------------------------------------------------
-   ![](media/image34.png){width="4.96875in" height="2.359461942257218in"}
-  -----------------------------------------------------------------------
+
+![](media/image34.png){width="4.96875in" height="2.359461942257218in"}
+-----------------------------------------------------------------------
+
              Neo6502 and Neo6502pc UEXT Connector w/signal identification
 
   -----------------------------------------------------------------------
@@ -4923,10 +2672,13 @@ RFID, RTC, EKG, sensors and etc.
 Neo6502pc UEXT connector is wired to RP2040 GPIOs as follows:
 
   -----------------------------------------------------------------------
+
                        ![A diagram of a circuit Description automatically
                 generated](media/image35.png){width="5.395160761154855in"
                                            height="1.8612674978127735in"}
+
   -----------------------------------------------------------------------
+
                                      Neo6502 and Neo6502pc UEXT schematic
 
   -----------------------------------------------------------------------
@@ -4937,10 +2689,13 @@ The Slide configuration switch can enable/disable the Buzzer, also can
 connect or disconnect RESB, NMIB and IRQB to RP2040 UEXT signals.
 
   -----------------------------------------------------------------------
+
                  ![A diagram of a circuit board Description automatically
                 generated](media/image36.jpg){width="6.133345363079615in"
                                            height="1.3467410323709537in"}
+
   -----------------------------------------------------------------------
+
                Neo6502 and Neo6502pc configuration switch block schematic
 
   -----------------------------------------------------------------------
@@ -4959,60 +2714,68 @@ wired to the RP2040. With SW2, SW3 and SW4 enabled, the SPI on UEXT
 ## Non-Printable ASCII Codes
 
   ---------------------------------------------------------------------------------
+
    Code   Ctrl      Key      Function  
+
   ------ ------ ----------- ---------- --------------------------------------------
+
     1      A    Left Arrow             Cursor Left
-
+    
     4      D    Right Arrow            Cursor Right
-
+    
     5      E      Insert               Insertion Mode
-
+    
     6      F     Page Down             Cursor Page Down
-
+    
     7      G        End                Cursor Line End
-
+    
     8      H     Backspace             Delete Character Left
-
+    
     9      I        Tab                Tab Character
-
+    
     10     J                           Line Feed
-
+    
     12     L                           Clear Screen
-
+    
     13     M       Enter               Carriage Return (Accept Line)
-
+    
     18     R      Page Up              Cursor Page Up
-
+    
     19     S       Down                Cursor Down
-
+    
     20     T       Home                Cursor Line Begin
-
+    
     22     V                           Cursor Down (8 Lines)
-
+    
     23     W        Up                 Cursor Up
-
+    
     24     X                           Cursor Color Inverse
-
+    
     26     Z      Delete               Delete Character Right
-
+    
     27     \[     Escape               Exit
+
   ---------------------------------------------------------------------------------
 
 ## Printable ASCII Characters Codes
 
   -----------------------------------------------------------------------
+
         Code       Key
+
   ---------------- ------------------------------------------------------
+
        20-7F       Standard set of ASCII Characters
-
+    
        80-8F       Set Foreground Color
-
+    
        90-9F       Set Background Color
-
+    
        C0-FF       User-definable Characters
+
   -----------------------------------------------------------------------
 
-#  
+# 
 
 # Appendix V -- CREDITS and LICENSE
 
@@ -5077,10 +2840,12 @@ generated](media/image5.png){width="2.7857141294838144in"
 height="0.7686843832020998in"}
 
   -----------------------------------------------------------------------
+
   **OLIMEX Ltd.**\          **Contact:** Mr. Tsvetan Usunov**\
   2 Pravda St., P.O. Box    Email:** <info@olimex.com>\
   237,\                     **Voice:** +359-32-626259,
   Plovdiv 4000 BULGARIA     +359-32-267407, +359-32-621270
+
   ------------------------- ---------------------------------------------
 
   -----------------------------------------------------------------------
